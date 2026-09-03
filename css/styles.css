@@ -410,3 +410,12 @@ body.modal-open { overflow: hidden; }
   [data-reveal], [data-hero-reveal], .hero__line > span { opacity: 1; transform: none; }
   .logos__marquee { animation: none; }
 }
+
+/* ---------- Small-screen refinements ---------- */
+@media (max-width: 720px) {
+  .hero__eyebrow { font-size: 11px; letter-spacing: .1em; max-width: 30ch; text-align: center; line-height: 1.5; }
+  .hero__eyebrow .eyebrow__dot { display: none; }
+  .hero__lead { font-size: 16px; }
+  .hero__actions { flex-direction: column; width: 100%; max-width: 320px; }
+  .hero__actions .btn { width: 100%; }
+}
