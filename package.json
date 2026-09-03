@@ -1,0 +1,10 @@
+{
+  "name": "certificacion-claude-code-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page cinematográfica — Certificación en Claude Code (AI LAB)",
+  "scripts": {
+    "start": "npx --yes http-server -p 8080 -c-1 -o .",
+    "verify": "node scripts/verify.mjs"
+  }
+}
