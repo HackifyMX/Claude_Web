@@ -2,3 +2,5 @@
 node_modules/
 raw/
 *.log
+verify-shots/
+verify-fonts/
