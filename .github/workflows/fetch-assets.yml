@@ -2,19 +2,10 @@ name: Fetch and process landing assets
 
 on:
   workflow_dispatch:
-    inputs:
-      hero_url:
-        description: "Hero clip (mp4) URL — scroll-scrub frame source"
-        required: true
-      poder_url:
-        description: "Clip 2 (mp4) URL — El poder de Claude Code"
-        required: true
-      resultado_url:
-        description: "Clip 3 (mp4) URL — El resultado"
-        required: true
-      avatar_urls:
-        description: "Comma-separated testimonial headshot URLs (4)"
-        required: true
+  push:
+    paths:
+      - "assets/sources.json"
+      - ".github/workflows/fetch-assets.yml"
 
 permissions:
   contents: write
@@ -30,21 +21,15 @@ jobs:
       - name: Install ffmpeg
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg webp > /dev/null
 
-      - name: Download sources
-        env:
-          HERO: ${{ inputs.hero_url }}
-          PODER: ${{ inputs.poder_url }}
-          RESULTADO: ${{ inputs.resultado_url }}
-          AVATARS: ${{ inputs.avatar_urls }}
+      - name: Download sources (from assets/sources.json)
         run: |
           set -e
           mkdir -p raw
-          curl -sSL -o raw/hero.mp4 "$HERO"
-          curl -sSL -o raw/poder.mp4 "$PODER"
-          curl -sSL -o raw/resultado.mp4 "$RESULTADO"
+          curl -sSL -o raw/hero.mp4 "$(jq -r .hero_url assets/sources.json)"
+          curl -sSL -o raw/poder.mp4 "$(jq -r .poder_url assets/sources.json)"
+          curl -sSL -o raw/resultado.mp4 "$(jq -r .resultado_url assets/sources.json)"
           i=1
-          IFS=',' read -ra LIST <<< "$AVATARS"
-          for u in "${LIST[@]}"; do curl -sSL -o "raw/avatar-$i.png" "$(echo "$u" | xargs)"; i=$((i+1)); done
+          for u in $(jq -r '.avatar_urls[]' assets/sources.json); do curl -sSL -o "raw/avatar-$i.png" "$u"; i=$((i+1)); done
           ls -la raw
 
       - name: Process media
