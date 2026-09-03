@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<title>Propuesta de valor — Certificación en Claude Code</title>
+<style>
+  @font-face { font-family: "Sora"; font-weight: 400; font-style: normal; font-display: block; src: url("fonts/Sora-400.ttf") format("truetype"); }
+  @font-face { font-family: "Sora"; font-weight: 500; font-style: normal; font-display: block; src: url("fonts/Sora-500.ttf") format("truetype"); }
+  @font-face { font-family: "Sora"; font-weight: 600; font-style: normal; font-display: block; src: url("fonts/Sora-600.ttf") format("truetype"); }
+  @font-face { font-family: "Sora"; font-weight: 700; font-style: normal; font-display: block; src: url("fonts/Sora-700.ttf") format("truetype"); }
+  @font-face { font-family: "Manrope"; font-weight: 400; font-style: normal; font-display: block; src: url("fonts/Manrope-400.ttf") format("truetype"); }
+  @font-face { font-family: "Manrope"; font-weight: 500; font-style: normal; font-display: block; src: url("fonts/Manrope-500.ttf") format("truetype"); }
+  @font-face { font-family: "Manrope"; font-weight: 600; font-style: normal; font-display: block; src: url("fonts/Manrope-600.ttf") format("truetype"); }
+  @font-face { font-family: "Manrope"; font-weight: 700; font-style: normal; font-display: block; src: url("fonts/Manrope-700.ttf") format("truetype"); }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: block; src: url("fonts/JetBrainsMono-400.ttf") format("truetype"); }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 500; font-style: normal; font-display: block; src: url("fonts/JetBrainsMono-500.ttf") format("truetype"); }
+  :root {
+    --ink: #0A0A0F; --ink-2: #14141C; --paper: #F7F7FA; --white: #fff;
+    --text: #111118; --muted: #5C5C6E; --muted-2: #8A8A9C; --line: rgba(17,17,24,.10);
+    --violet: #6D4AFF; --violet-2: #8B5CF6; --violet-deep: #4527C9; --violet-soft: #EFEAFF; --lilac: #C9B8FF;
+    --display: "Sora", "Helvetica Neue", Arial, sans-serif; --body: "Manrope", "Helvetica Neue", Arial, sans-serif; --mono: "JetBrains Mono", Menlo, monospace;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; background: #E9E9EF; font-family: var(--body); color: var(--text); font-size: 10.5pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, p, ul, ol { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  h1, h2, h3 { font-family: var(--display); letter-spacing: -0.02em; line-height: 1.06; font-weight: 600; }
+  img { display: block; }
+
+  .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; background: var(--white); page-break-after: always; break-after: page; padding: 18mm 16mm; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .page--dark { background: var(--ink); color: #fff; }
+  .page--paper { background: var(--paper); }
+
+  .eyebrow { display: inline-flex; align-items: center; gap: 7pt; font-size: 8.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--violet-deep); }
+  .eyebrow i { width: 6pt; height: 6pt; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 3pt rgba(109,74,255,.14); }
+  .page--dark .eyebrow { color: rgba(255,255,255,.72); }
+  .page--dark .eyebrow i { background: var(--violet-2); box-shadow: 0 0 0 3pt rgba(139,92,246,.25); }
+  .title { font-size: 26pt; margin-top: 9pt; max-width: 150mm; text-wrap: balance; }
+  .lead { margin-top: 8pt; font-size: 11.5pt; color: var(--muted); max-width: 140mm; line-height: 1.55; }
+  .page--dark .lead { color: rgba(255,255,255,.7); }
+
+  .foot { position: absolute; left: 16mm; right: 16mm; bottom: 10mm; display: flex; justify-content: space-between; align-items: center; font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+  .page--dark .foot { color: rgba(255,255,255,.45); }
+  .foot b { font-family: var(--display); font-weight: 600; letter-spacing: 0; text-transform: none; font-size: 8.5pt; color: inherit; }
+  .mark { display: inline-block; width: 10pt; height: 10pt; border-radius: 3pt; background: linear-gradient(135deg, var(--violet-2), var(--violet-deep)); vertical-align: -2pt; margin-right: 5pt; position: relative; }
+  .mark::after { content: ""; position: absolute; inset: 2.6pt; border-radius: 1.5pt; background: #fff; clip-path: polygon(0 0, 100% 0, 100% 35%, 55% 35%, 55% 100%, 0 100%); }
+
+  /* ---- Cover ---- */
+  .cover { padding: 0; }
+  .cover__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9; }
+  .cover__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,15,.55) 0%, rgba(10,10,15,.15) 40%, rgba(10,10,15,.85) 78%, #0A0A0F 100%); }
+  .cover__top { position: absolute; top: 16mm; left: 16mm; right: 16mm; display: flex; justify-content: space-between; align-items: center; font-family: var(--display); font-weight: 600; font-size: 10pt; color: #fff; }
+  .cover__top span { font-family: var(--body); font-weight: 500; font-size: 8.5pt; color: rgba(255,255,255,.7); }
+  .cover__body { position: absolute; left: 16mm; right: 16mm; bottom: 22mm; color: #fff; }
+  .cover__body h1 { font-size: 40pt; letter-spacing: -0.035em; line-height: .98; max-width: 165mm; }
+  .cover__body h1 em { font-style: normal; background: linear-gradient(92deg, #E4DBFF 0%, #A78BFA 45%, #8B5CF6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .cover__sub { margin-top: 14pt; font-size: 12pt; color: rgba(255,255,255,.78); max-width: 140mm; }
+  .cover__pill { display: inline-flex; gap: 8pt; align-items: center; margin-bottom: 14pt; padding: 6pt 12pt; border-radius: 99pt; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.06); font-size: 8.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .cover__pill i { width: 6pt; height: 6pt; border-radius: 50%; background: var(--violet-2); box-shadow: 0 0 8pt var(--violet-2); }
+  .cover__meta { margin-top: 18pt; display: flex; gap: 22pt; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .cover__meta b { display: block; font-family: var(--display); font-size: 13pt; letter-spacing: -0.01em; text-transform: none; color: #fff; margin-bottom: 2pt; }
+
+  /* ---- Metrics ---- */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; margin-top: 20pt; }
+  .metric { padding: 14pt 12pt 12pt; border-radius: 10pt; border: 1px solid var(--line); background: linear-gradient(180deg, #fff, var(--paper)); position: relative; overflow: hidden; }
+  .metric::before { content: ""; position: absolute; left: 12pt; top: 0; width: 26pt; height: 2.5pt; background: linear-gradient(90deg, var(--violet), var(--violet-2)); border-radius: 0 0 2pt 2pt; }
+  .metric b { font-family: var(--display); font-size: 24pt; letter-spacing: -0.04em; line-height: 1; display: block; }
+  .metric b small { font-size: .5em; color: var(--violet); }
+  .metric span { display: block; margin-top: 5pt; font-size: 8.5pt; font-weight: 600; color: var(--muted); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16pt; margin-top: 20pt; }
+  .card { border: 1px solid var(--line); border-radius: 12pt; padding: 16pt; background: #fff; }
+  .card h3 { font-size: 13pt; }
+  .card p { margin-top: 6pt; color: var(--muted); font-size: 9.5pt; }
+  .ticks { margin-top: 10pt; display: grid; gap: 6pt; font-size: 9.5pt; }
+  .ticks li { display: flex; gap: 8pt; align-items: flex-start; }
+  .ticks li::before { content: ""; flex: none; width: 11pt; height: 11pt; margin-top: 2pt; border-radius: 50%; background: var(--violet-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234527C9' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/7pt no-repeat; }
+
+  /* ---- Pillars (Desarrolla / Automatiza / Certifícate) ---- */
+  .pillars { margin-top: 18pt; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10pt; }
+  .pillar { border-radius: 12pt; padding: 16pt 14pt; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); }
+  .pillar small { font-family: var(--mono); font-size: 8pt; color: var(--violet-2); letter-spacing: .1em; }
+  .pillar h3 { font-size: 20pt; margin-top: 6pt; letter-spacing: -0.03em; }
+  .pillar p { margin-top: 8pt; font-size: 9.5pt; color: rgba(255,255,255,.72); }
+  .pillar ul { margin-top: 10pt; display: flex; flex-wrap: wrap; gap: 4pt; }
+  .pillar li { font-size: 7.5pt; font-weight: 700; padding: 3pt 7pt; border-radius: 99pt; border: 1px solid rgba(255,255,255,.2); }
+  .still { margin-top: 18pt; border-radius: 12pt; overflow: hidden; position: relative; height: 78mm; border: 1px solid rgba(255,255,255,.1); }
+  .still img { width: 100%; height: 100%; object-fit: cover; }
+  .still figcaption { position: absolute; left: 12pt; bottom: 10pt; font-family: var(--mono); font-size: 8pt; color: rgba(255,255,255,.75); background: rgba(10,10,15,.55); padding: 4pt 8pt; border-radius: 6pt; }
+
+  /* ---- Timeline ---- */
+  .tl { margin-top: 18pt; display: grid; gap: 10pt; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 13pt; top: 14pt; bottom: 14pt; width: 1.5pt; background: linear-gradient(180deg, var(--violet-2), var(--violet-deep)); border-radius: 2pt; }
+  .tl li { display: grid; grid-template-columns: 27pt 1fr; gap: 12pt; align-items: start; }
+  .tl__n { width: 27pt; height: 27pt; border-radius: 50%; background: var(--violet); color: #fff; display: grid; place-items: center; font-family: var(--mono); font-size: 9pt; box-shadow: 0 0 0 4pt rgba(109,74,255,.12); position: relative; z-index: 1; }
+  .tl__c { background: #fff; border: 1px solid var(--line); border-radius: 12pt; padding: 12pt 14pt; }
+  .tl__c.final { background: linear-gradient(135deg, #fff, var(--violet-soft)); border-color: rgba(109,74,255,.25); }
+  .tl__m { font-size: 8pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--violet); }
+  .tl__c h3 { font-size: 13pt; margin-top: 3pt; }
+  .tl__c p { margin-top: 4pt; font-size: 9.5pt; color: var(--muted); }
+  .tl__c ul { margin-top: 7pt; display: flex; flex-wrap: wrap; gap: 4pt; }
+  .tl__c li { display: block; font-size: 7.5pt; font-weight: 700; padding: 3pt 8pt; border-radius: 99pt; background: var(--paper); border: 1px solid var(--line); }
+
+  /* ---- Journey ---- */
+  .journey { margin-top: 16pt; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; position: relative; padding-top: 12pt; }
+  .journey::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1.5pt; background: linear-gradient(90deg, var(--violet-2), var(--lilac)); }
+  .journey div { position: relative; }
+  .journey div::before { content: ""; position: absolute; left: 0; top: -16pt; width: 8pt; height: 8pt; border-radius: 50%; background: var(--violet-2); box-shadow: 0 0 0 3pt rgba(139,92,246,.25); }
+  .journey small { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--violet-2); }
+  .journey h3 { font-size: 16pt; margin-top: 4pt; }
+  .journey p { margin-top: 5pt; font-size: 9.5pt; color: rgba(255,255,255,.7); }
+
+  /* ---- Benefits ---- */
+  .benefits { margin-top: 16pt; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; }
+  .benefit { border-radius: 10pt; padding: 12pt 11pt; background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 1pt 0 #fff inset, 0 4pt 14pt rgba(17,17,24,.05); }
+  .benefit i { display: grid; place-items: center; width: 22pt; height: 22pt; border-radius: 7pt; background: linear-gradient(135deg, var(--violet), var(--violet-deep)); margin-bottom: 8pt; }
+  .benefit i svg { width: 12pt; height: 12pt; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .benefit h3 { font-size: 10pt; letter-spacing: -0.01em; }
+  .benefit p { margin-top: 4pt; font-size: 8.3pt; color: var(--muted); line-height: 1.45; }
+  .benefits-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(40% 40% at 10% 15%, rgba(139,92,246,.18), transparent 70%), radial-gradient(45% 45% at 90% 85%, rgba(109,74,255,.16), transparent 70%); }
+
+  /* ---- Pricing ---- */
+  .pricing { margin-top: 18pt; display: grid; grid-template-columns: 1.05fr .95fr; gap: 16pt; align-items: start; }
+  .price { background: var(--ink); color: #fff; border-radius: 16pt; padding: 22pt 20pt; position: relative; overflow: hidden; }
+  .price::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 45% at 80% 0%, rgba(109,74,255,.5), transparent 70%); }
+  .price > * { position: relative; }
+  .price__l { font-size: 8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .price__a { margin-top: 10pt; font-family: var(--display); font-weight: 600; letter-spacing: -0.04em; line-height: 1; display: flex; align-items: baseline; gap: 4pt; }
+  .price__a .c { font-size: 18pt; color: var(--violet-2); }
+  .price__a .n { font-size: 44pt; }
+  .price__a .m { font-size: 12pt; color: rgba(255,255,255,.6); margin-left: 4pt; }
+  .price__note { margin-top: 4pt; font-size: 9pt; color: rgba(255,255,255,.55); }
+  .price ul { margin-top: 14pt; padding-top: 12pt; border-top: 1px solid rgba(255,255,255,.12); display: grid; gap: 6pt; font-size: 9.3pt; color: rgba(255,255,255,.88); }
+  .price li { display: flex; gap: 8pt; align-items: center; }
+  .price li::before { content: ""; flex: none; width: 11pt; height: 11pt; border-radius: 50%; border: 1px solid rgba(139,92,246,.6); background: rgba(139,92,246,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9B8FF' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/7pt no-repeat; }
+  .price__g { margin-top: 14pt; display: flex; gap: 8pt; align-items: flex-start; padding: 10pt 12pt; border-radius: 10pt; background: rgba(124,224,179,.08); border: 1px solid rgba(124,224,179,.25); font-size: 9pt; color: rgba(255,255,255,.85); }
+  .price__g svg { flex: none; width: 13pt; height: 13pt; color: #7CE0B3; margin-top: 1pt; }
+  .value { display: grid; gap: 12pt; }
+  .value li { display: flex; gap: 10pt; align-items: flex-start; }
+  .value i { flex: none; width: 24pt; height: 24pt; border-radius: 7pt; display: grid; place-items: center; font-family: var(--mono); font-style: normal; font-size: 8.5pt; color: var(--violet-deep); background: var(--violet-soft); }
+  .value b { font-family: var(--display); font-weight: 600; font-size: 11pt; display: block; }
+  .value p { margin-top: 2pt; color: var(--muted); font-size: 9.3pt; }
+  .compare { margin-top: 14pt; border: 1px solid var(--line); border-radius: 12pt; overflow: hidden; font-size: 9pt; }
+  .compare table { width: 100%; border-collapse: collapse; }
+  .compare th, .compare td { padding: 7pt 10pt; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .compare th { font-family: var(--display); font-weight: 600; font-size: 8.5pt; background: var(--paper); }
+  .compare th:last-child, .compare td:last-child { background: var(--violet-soft); color: var(--violet-deep); font-weight: 600; }
+  .compare tr:last-child td { border-bottom: 0; }
+  .compare td:first-child { color: var(--muted); }
+
+  /* ---- Testimonials ---- */
+  .testis { margin-top: 16pt; display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
+  .testi { border: 1px solid var(--line); border-radius: 12pt; padding: 14pt; background: #fff; position: relative; }
+  .testi::before { content: "“"; position: absolute; top: 2pt; right: 12pt; font-family: var(--display); font-size: 40pt; line-height: 1; color: var(--violet-soft); font-weight: 700; }
+  .testi p { font-size: 9.5pt; line-height: 1.5; position: relative; }
+  .testi footer { display: flex; align-items: center; gap: 8pt; margin-top: 10pt; padding-top: 9pt; border-top: 1px solid var(--line); }
+  .testi img { width: 26pt; height: 26pt; border-radius: 50%; object-fit: cover; }
+  .testi b { font-family: var(--display); font-weight: 600; font-size: 9.5pt; display: block; }
+  .testi span { font-size: 8pt; color: var(--muted); }
+  .testi em { margin-left: auto; font-style: normal; font-size: 7pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--violet-deep); background: var(--violet-soft); padding: 3pt 7pt; border-radius: 99pt; }
+
+  /* ---- Final ---- */
+  .final { padding: 0; }
+  .final__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .final__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,15,.35), rgba(10,10,15,.2) 35%, rgba(10,10,15,.9) 70%, #0A0A0F 100%); }
+  .final__body { position: absolute; left: 16mm; right: 16mm; bottom: 24mm; color: #fff; }
+  .final__body h2 { font-size: 34pt; letter-spacing: -0.035em; max-width: 150mm; }
+  .final__body p { margin-top: 10pt; font-size: 11pt; color: rgba(255,255,255,.75); max-width: 130mm; }
+  .cta { display: inline-block; margin-top: 16pt; padding: 11pt 20pt; border-radius: 99pt; background: linear-gradient(135deg, var(--violet), var(--violet-deep)); color: #fff; font-weight: 700; font-size: 10.5pt; box-shadow: 0 10pt 28pt rgba(109,74,255,.35); text-decoration: none; }
+  .contact { margin-top: 18pt; display: flex; gap: 22pt; font-size: 8.5pt; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .contact b { display: block; font-family: var(--body); font-weight: 600; font-size: 10pt; letter-spacing: 0; text-transform: none; color: #fff; margin-bottom: 2pt; }
+  .steps { margin-top: 16pt; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt; }
+  .step { border-radius: 10pt; padding: 12pt; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); font-size: 9pt; color: rgba(255,255,255,.8); }
+  .step b { display: block; font-family: var(--display); font-weight: 600; font-size: 11pt; color: #fff; margin: 4pt 0 3pt; }
+  .step small { font-family: var(--mono); font-size: 7.5pt; color: var(--violet-2); letter-spacing: .1em; }
+</style>
+</head>
+<body>
+
+<!-- 1 · Portada -->
+<section class="page page--dark cover">
+  <img class="cover__bg" src="../assets/hero/frames/frame_0121.webp" alt="">
+  <div class="cover__shade"></div>
+  <div class="cover__top"><div><span class="mark"></span>AI LAB</div><span>Propuesta de valor · 2026</span></div>
+  <div class="cover__body">
+    <div class="cover__pill"><i></i>Certificación en Claude Code · 4 meses</div>
+    <h1>Conviértete en un profesional <em>de la IA.</em></h1>
+    <p class="cover__sub">Un programa profesional que te transforma en un desarrollador certificado, capaz de construir proyectos reales con Claude Code de Anthropic e inteligencia artificial.</p>
+    <div class="cover__meta">
+      <div><b>4 meses</b>Duración</div>
+      <div><b>Semanal</b>Capacitación en vivo</div>
+      <div><b>$8,000 MXN</b>Inversión total</div>
+      <div><b>Anthropic</b>Acreditación</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · La oportunidad -->
+<section class="page">
+  <p class="eyebrow"><i></i>La oportunidad</p>
+  <h2 class="title">Las empresas ya adoptan IA. Necesitan profesionales que sepan construir con ella.</h2>
+  <p class="lead">Claude Code convierte a un desarrollador en un equipo: entiende repositorios completos, escribe y prueba código, automatiza procesos y ejecuta tareas complejas de principio a fin. Dominarlo con respaldo de una certificación es hoy una ventaja profesional concreta.</p>
+
+  <ul class="metrics">
+    <li class="metric"><b>4</b><span>Meses de formación</span></li>
+    <li class="metric"><b>16<small>+</small></b><span>Capacitaciones semanales</span></li>
+    <li class="metric"><b>100<small>%</small></b><span>Soporte de instructores</span></li>
+    <li class="metric"><b>1</b><span>Certificación en Claude Code</span></li>
+  </ul>
+
+  <div class="two">
+    <div class="card">
+      <h3>Qué es el programa</h3>
+      <p>Una formación profesional de cuatro meses, con sesiones semanales en vivo, proyectos prácticos revisados por instructores y una ruta de preparación para aprobar la certificación en Claude Code con acreditación por Anthropic.</p>
+      <ul class="ticks">
+        <li>Aprendizaje progresivo: de fundamentos a agentes y automatización.</li>
+        <li>Portafolio de proyectos reales, no ejercicios de laboratorio.</li>
+        <li>Acompañamiento hasta aprobar la certificación.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Para quién es</h3>
+      <p>Para profesionales que quieren pasar de usar IA a construir con ella y demostrarlo con una credencial reconocida.</p>
+      <ul class="ticks">
+        <li>Desarrolladores que buscan multiplicar su productividad y liderar la adopción de IA en su equipo.</li>
+        <li>Perfiles de producto, datos y operaciones que necesitan automatizar y prototipar soluciones.</li>
+        <li>Profesionales en transición hacia roles de AI Developer.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span><b><span class="mark"></span>AI LAB</b></span><span>Certificación en Claude Code · Propuesta de valor</span><span>02</span></div>
+</section>
+
+<!-- 3 · El poder de Claude Code -->
+<section class="page page--dark">
+  <p class="eyebrow"><i></i>El poder de Claude Code</p>
+  <h2 class="title">Tres capacidades que definen a un profesional de IA.</h2>
+  <p class="lead">El programa se organiza alrededor de lo que el mercado espera de un desarrollador asistido por IA: construir, automatizar y demostrarlo.</p>
+  <div class="pillars">
+    <div class="pillar"><small>01</small><h3>Desarrolla</h3><p>Construye software real desde la terminal con un agente que entiende tu repositorio completo, escribe, refactoriza y prueba código a nivel profesional.</p><ul><li>Proyectos end-to-end</li><li>Arquitectura</li><li>Testing</li></ul></div>
+    <div class="pillar"><small>02</small><h3>Automatiza</h3><p>Diseña flujos de trabajo con agentes, Model Context Protocol e integraciones que ejecutan tareas complejas de principio a fin, con precisión y velocidad.</p><ul><li>Agentes</li><li>MCP</li><li>Integraciones</li></ul></div>
+    <div class="pillar"><small>03</small><h3>Certifícate</h3><p>Valida tu dominio con una certificación reconocida en el ecosistema de Anthropic y posiciónate como profesional de IA ante las empresas.</p><ul><li>Examen guiado</li><li>Acreditación</li><li>Posicionamiento</li></ul></div>
+  </div>
+  <figure class="still"><img src="../assets/video/poder.jpg" alt=""><figcaption>$ claude "resuelve la tarea y ejecuta las pruebas"</figcaption></figure>
+  <div class="foot"><span><b><span class="mark"></span>AI LAB</b></span><span>Certificación en Claude Code · Propuesta de valor</span><span>03</span></div>
+</section>
+
+<!-- 4 · Estructura -->
+<section class="page page--paper">
+  <p class="eyebrow"><i></i>Estructura del programa</p>
+  <h2 class="title">Cuatro meses. Un camino claro hacia la certificación.</h2>
+  <p class="lead">Aprendizaje progresivo, proyectos prácticos y acompañamiento de instructores en cada etapa, hasta el día del examen.</p>
+  <ol class="tl">
+    <li><span class="tl__n">01</span><div class="tl__c"><p class="tl__m">Mes 1</p><h3>Fundamentos de desarrollo con IA</h3><p>Domina Claude Code desde la terminal: contexto, prompts de ingeniería, gestión de repositorios y buenas prácticas de un desarrollador asistido por IA.</p><ul><li>Configuración profesional del entorno</li><li>Primer proyecto guiado</li><li>Sesiones semanales en vivo</li></ul></div></li>
+    <li><span class="tl__n">02</span><div class="tl__c"><p class="tl__m">Mes 2</p><h3>Proyectos prácticos del mundo real</h3><p>Construye aplicaciones completas con arquitectura, pruebas y despliegue. Cada proyecto se revisa con feedback directo de instructores.</p><ul><li>Aplicaciones full-stack con IA</li><li>Revisión de código profesional</li><li>Portafolio verificable</li></ul></div></li>
+    <li><span class="tl__n">03</span><div class="tl__c"><p class="tl__m">Mes 3</p><h3>Automatización, agentes y MCP</h3><p>Diseña agentes y flujos automatizados conectados a herramientas reales mediante Model Context Protocol, integraciones y pipelines.</p><ul><li>Agentes autónomos</li><li>Servidores MCP e integraciones</li><li>Automatización de procesos empresariales</li></ul></div></li>
+    <li><span class="tl__n">04</span><div class="tl__c final"><p class="tl__m">Mes 4</p><h3>Preparación de examen y certificación</h3><p>Guía de examen, simulacros y sesiones de refuerzo con instructores. Te acompañamos hasta que apruebes tu certificación en Claude Code.</p><ul><li>Guía oficial de preparación</li><li>Simulacros evaluados</li><li>Acreditación por Anthropic</li></ul></div></li>
+  </ol>
+  <div class="foot"><span><b><span class="mark"></span>AI LAB</b></span><span>Certificación en Claude Code · Propuesta de valor</span><span>04</span></div>
+</section>
+
+<!-- 5 · Transformación + Beneficios -->
+<section class="page page--dark" style="padding-bottom:0">
+  <p class="eyebrow"><i></i>Transformación profesional</p>
+  <h2 class="title">De aprender IA a ser un profesional certificado en Claude Code.</h2>
+  <div class="journey">
+    <div><small>Etapa 1</small><h3>Aprendes</h3><p>Comprendes cómo trabaja un desarrollador asistido por IA y ejecutas tus primeras tareas reales con Claude Code.</p></div>
+    <div><small>Etapa 2</small><h3>Construyes</h3><p>Desarrollas proyectos completos, automatizas procesos y acumulas evidencia profesional en tu portafolio.</p></div>
+    <div><small>Etapa 3</small><h3>Te certificas</h3><p>Apruebas tu certificación, obtienes acreditación por Anthropic y te posicionas como talento IA ante empresas.</p></div>
+  </div>
+
+  <div style="margin:18pt -16mm 0; padding:16pt 16mm 22pt; background:var(--paper); color:var(--text); position:relative; flex:1">
+    <div class="benefits-bg"></div>
+    <p class="eyebrow" style="position:relative"><i></i>Beneficios incluidos</p>
+    <ul class="benefits" style="position:relative">
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><path d="M4 5h16v11H4zM8 21h8M12 16v5"/></svg></i><h3>Capacitación semanal</h3><p>Sesiones en vivo cada semana con práctica guiada y resolución de dudas.</p></li>
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></i><h3>Soporte de instructores</h3><p>Acompañamiento personalizado de expertos durante todo el programa.</p></li>
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h6M9 17h6"/></svg></i><h3>Guía de examen</h3><p>Material de preparación, simulacros y estrategia para aprobar.</p></li>
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4zM4 7l8 6 8-6M9 3h6"/></svg></i><h3>Proyectos prácticos</h3><p>Proyectos reales que se convierten en tu portafolio profesional.</p></li>
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M10 21v-6h4v6"/></svg></i><h3>Posicionamiento de talento IA</h3><p>Programa de vinculación con empresas que adoptan IA.</p></li>
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="6"/><path d="M8.5 15.5 7 22l5-3 5 3-1.5-6.5"/></svg></i><h3>Acreditación por Anthropic</h3><p>Certificación respaldada por el creador de Claude.</p></li>
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/></svg></i><h3>Comunidad profesional</h3><p>Red de profesionales certificados para compartir proyectos y oportunidades.</p></li>
+      <li class="benefit"><i><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 11l10-4M7 13l10 4"/></svg></i><h3>Plataforma de networking</h3><p>Conecta con empresas, instructores y colegas.</p></li>
+    </ul>
+    <div class="foot" style="color:var(--muted-2)"><span><b><span class="mark"></span>AI LAB</b></span><span>Certificación en Claude Code · Propuesta de valor</span><span>05</span></div>
+  </div>
+</section>
+
+<!-- 6 · Inversión -->
+<section class="page">
+  <p class="eyebrow"><i></i>Inversión</p>
+  <h2 class="title">Una inversión en tu carrera, no un curso más.</h2>
+  <p class="lead">La certificación en Claude Code te posiciona en una de las especialidades con mayor demanda. AI LAB te acompaña hasta que apruebes.</p>
+  <div class="pricing">
+    <div>
+      <ul class="value">
+        <li><i>01</i><div><b>Acompañamiento hasta certificarte</b><p>Si necesitas más preparación, seguimos contigo. Sin costo adicional.</p></div></li>
+        <li><i>02</i><div><b>Portafolio de proyectos reales</b><p>Evidencia verificable de lo que sabes construir con IA.</p></div></li>
+        <li><i>03</i><div><b>Posicionamiento ante empresas</b><p>Programa de talento IA para conectar con oportunidades laborales.</p></div></li>
+        <li><i>04</i><div><b>Credencial con respaldo</b><p>Acreditación por Anthropic, reconocida en el ecosistema profesional de IA.</p></div></li>
+      </ul>
+      <div class="compare">
+        <table>
+          <thead><tr><th></th><th>Curso en línea convencional</th><th>Certificación AI LAB</th></tr></thead>
+          <tbody>
+            <tr><td>Formato</td><td>Videos grabados</td><td>Sesiones semanales en vivo</td></tr>
+            <tr><td>Acompañamiento</td><td>Foros o ninguno</td><td>Instructores durante 4 meses</td></tr>
+            <tr><td>Resultado</td><td>Constancia de participación</td><td>Certificación con acreditación por Anthropic</td></tr>
+            <tr><td>Proyectos</td><td>Ejercicios aislados</td><td>Portafolio de proyectos reales</td></tr>
+            <tr><td>Si no apruebas</td><td>Termina el acceso</td><td>Soporte hasta aprobar</td></tr>
+            <tr><td>Después del programa</td><td>Nada</td><td>Comunidad, networking y posicionamiento</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="price">
+      <p class="price__l">Certificación en Claude Code · 4 meses</p>
+      <div class="price__a"><span class="c">$</span><span class="n">8,000</span><span class="m">MXN</span></div>
+      <p class="price__note">Inversión total del programa</p>
+      <ul>
+        <li>4 meses de formación profesional</li>
+        <li>Capacitaciones semanales en vivo</li>
+        <li>Soporte de instructores</li>
+        <li>Guía de examen y simulacros</li>
+        <li>Proyectos prácticos y portafolio</li>
+        <li>Acreditación por Anthropic</li>
+        <li>Comunidad y plataforma de networking</li>
+        <li>Programa de posicionamiento de talento IA</li>
+      </ul>
+      <div class="price__g"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.4 9-8 10-4.6-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AI LAB te brinda soporte hasta que apruebes exitosamente la certificación.</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><b><span class="mark"></span>AI LAB</b></span><span>Certificación en Claude Code · Propuesta de valor</span><span>06</span></div>
+</section>
+
+<!-- 7 · Testimonios -->
+<section class="page page--paper">
+  <p class="eyebrow"><i></i>Testimonios</p>
+  <h2 class="title">Profesionales que ya dieron el siguiente paso.</h2>
+  <div class="testis">
+    <article class="testi"><p>Llegué sabiendo programar, pero no cómo trabajar con IA de forma profesional. Hoy entrego proyectos completos en la mitad del tiempo y mi equipo me pidió liderar la adopción de Claude Code.</p><footer><img src="../assets/img/avatar-1.jpg" alt=""><div><b>Mariana Ortega</b><span>Ingeniera de software · Fintech, CDMX</span></div><em>Certificada</em></footer></article>
+    <article class="testi"><p>La guía de examen y los simulacros hicieron la diferencia. Aprobé a la primera y la acreditación abrió conversaciones con empresas que antes no me respondían.</p><footer><img src="../assets/img/avatar-2.jpg" alt=""><div><b>Diego Salazar</b><span>Desarrollador backend · Guadalajara</span></div><em>Certificado</em></footer></article>
+    <article class="testi"><p>Venía de producto, no de código. Con el soporte de los instructores construí un agente que automatiza reportes para mi área. Ahora coordino proyectos de IA en la empresa.</p><footer><img src="../assets/img/avatar-3.jpg" alt=""><div><b>Laura Beltrán</b><span>Product Manager · Monterrey</span></div><em>Certificada</em></footer></article>
+    <article class="testi"><p>Pasé de analizar datos a desarrollar soluciones con IA. El programa de posicionamiento de talento me conectó con la empresa donde hoy trabajo como AI Developer.</p><footer><img src="../assets/img/avatar-4.jpg" alt=""><div><b>Andrés Villanueva</b><span>AI Developer · Querétaro</span></div><em>Certificado</em></footer></article>
+  </div>
+
+  <p class="eyebrow" style="margin-top:22pt"><i></i>Preguntas frecuentes</p>
+  <div class="two" style="margin-top:10pt">
+    <div class="card"><h3>¿Qué pasa si no apruebo a la primera?</h3><p>AI LAB te brinda soporte hasta que apruebes exitosamente: acompañamiento de instructores, material de preparación y sesiones de refuerzo sin costo adicional.</p></div>
+    <div class="card"><h3>¿Qué significa la acreditación por Anthropic?</h3><p>Tu certificación está respaldada por Anthropic, la empresa creadora de Claude, lo que le da credibilidad y reconocimiento dentro del ecosistema profesional de IA.</p></div>
+    <div class="card"><h3>¿Cómo funcionan las capacitaciones semanales?</h3><p>Cada semana tienes una sesión en vivo con instructores: conceptos, ejercicios prácticos y resolución de dudas. Las sesiones quedan grabadas para repasarlas.</p></div>
+    <div class="card"><h3>¿En qué consiste el posicionamiento de talento IA?</h3><p>Presentamos tu perfil certificado y tu portafolio ante empresas que adoptan inteligencia artificial, para conectarte con oportunidades reales.</p></div>
+  </div>
+  <div class="foot"><span><b><span class="mark"></span>AI LAB</b></span><span>Certificación en Claude Code · Propuesta de valor</span><span>07</span></div>
+</section>
+
+<!-- 8 · Cierre -->
+<section class="page page--dark final">
+  <img class="final__bg" src="../assets/video/resultado.jpg" alt="">
+  <div class="final__shade"></div>
+  <div class="final__body">
+    <p class="eyebrow"><i></i>El resultado</p>
+    <h2>Tu próximo nivel profesional comienza aquí.</h2>
+    <p>Cupo limitado por generación. Asegura tu lugar y empieza a construir con Claude Code.</p>
+    <div class="steps">
+      <div class="step"><small>PASO 1</small><b>Solicita tu lugar</b>Déjanos tus datos en la landing o escríbenos.</div>
+      <div class="step"><small>PASO 2</small><b>Sesión de orientación</b>Un asesor resuelve tus dudas y confirma tu inscripción.</div>
+      <div class="step"><small>PASO 3</small><b>Inicia tu generación</b>Primera capacitación semanal y acceso a la comunidad.</div>
+    </div>
+    <a class="cta" href="#">Quiero certificarme en Claude Code</a>
+    <div class="contact">
+      <div><b>AI LAB</b>Educación profesional en IA</div>
+      <div><b>Community@ailabschool.com</b>Contacto</div>
+      <div><b>$8,000 MXN</b>Inversión · Soporte hasta aprobar</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -36,3 +36,13 @@ Todos los botones "Quiero certificarme" abren un modal con formulario de solicit
 Los tres clips se generaron con Seedance 2.0 (Higgsfield, modo std, 1080p, 16:9, 8 s, sin audio) y los retratos con Recraft V4.1. Las URLs de origen están en `assets/sources.json`.
 
 El workflow `.github/workflows/fetch-assets.yml` descarga esos orígenes y produce los archivos web (frames del hero, MP4 optimizados, pósters y avatares) en `assets/`. Se ejecuta al hacer push de `assets/sources.json` o manualmente desde la pestaña Actions. Para reprocesar con nuevos clips basta con actualizar `assets/sources.json`.
+
+## Propuesta de valor (PDF)
+
+`docs/Propuesta-de-Valor-Certificacion-Claude-Code.pdf` — documento de 8 páginas en A4 con la propuesta de valor del programa, con el mismo sistema visual del landing (fotogramas de los clips, paleta violeta, tipografías Sora / Manrope / JetBrains Mono incrustadas).
+
+Para regenerarlo después de editar `docs/propuesta-de-valor.html`:
+
+```bash
+node docs/render-pdf.mjs
+```
