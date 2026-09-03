@@ -26,8 +26,9 @@
   const heroBar = $('#heroProgressBar');
   const heroStatusText = $('#heroStatusText');
 
-  const FRAME_COUNT = Number(hero.dataset.frames || 120);
-  const FRAME_PATH = (i) => `assets/hero/frames/frame_${String(i).padStart(4, '0')}.webp`;
+  const INLINE_FRAMES = Array.isArray(window.__HERO_FRAMES) ? window.__HERO_FRAMES : null;
+  const FRAME_COUNT = INLINE_FRAMES ? INLINE_FRAMES.length : Number(hero.dataset.frames || 120);
+  const FRAME_PATH = (i) => INLINE_FRAMES ? INLINE_FRAMES[i - 1] : `assets/hero/frames/frame_${String(i).padStart(4, '0')}.webp`;
   const frames = new Array(FRAME_COUNT).fill(null);
   let lastDrawn = -1;
   let currentFrame = 0;
