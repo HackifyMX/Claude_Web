@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificación en Claude Code — 4 meses | AI LAB</title>
+  <meta name="description" content="Programa profesional de 4 meses para convertirte en un profesional certificado en Claude Code de Anthropic, capaz de desarrollar proyectos reales con inteligencia artificial.">
+  <meta name="theme-color" content="#0A0A0F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" as="image" href="assets/hero/frames/frame_0001.webp">
+</head>
+<body>
+
+  <a class="skip-link" href="#programa">Ir al contenido</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#top" aria-label="AI LAB — inicio">
+        <span class="nav__mark" aria-hidden="true"></span>
+        <span class="nav__name">AI LAB</span>
+        <span class="nav__divider" aria-hidden="true"></span>
+        <span class="nav__program">Certificación Claude Code</span>
+      </a>
+      <nav class="nav__links" aria-label="Secciones">
+        <a href="#programa">Programa</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#inversion">Inversión</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="btn btn--small btn--primary" data-cta data-magnetic>Quiero certificarme</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO (scroll-scrub) ============ -->
+    <section class="hero" id="hero" aria-label="Introducción">
+      <div class="hero__sticky">
+        <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="hero__vignette" aria-hidden="true"></div>
+        <div class="hero__fade" id="heroFade" aria-hidden="true"></div>
+
+        <div class="hero__content container">
+          <p class="eyebrow eyebrow--light hero__eyebrow" data-hero-reveal>
+            <span class="eyebrow__dot"></span>
+            Certificación en Claude Code · 4 meses · Anthropic
+          </p>
+          <h1 class="hero__title" id="heroTitle">
+            <span class="hero__line"><span>Conviértete en un</span></span>
+            <span class="hero__line"><span>profesional <em>de la IA.</em></span></span>
+          </h1>
+          <p class="hero__lead" data-hero-reveal>
+            Un programa profesional de 4 meses que te transforma en un desarrollador certificado,
+            capaz de construir proyectos reales con Claude Code e inteligencia artificial.
+          </p>
+          <div class="hero__actions" data-hero-reveal>
+            <button class="btn btn--primary btn--large" data-cta data-magnetic id="heroCta">
+              Quiero certificarme
+              <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <a class="btn btn--ghost btn--large" href="#programa">Ver el programa</a>
+          </div>
+        </div>
+
+        <div class="hero__scroll" aria-hidden="true">
+          <span class="hero__scroll-label">Desplázate para construir tu entorno</span>
+          <span class="hero__scroll-bar"><span id="heroProgressBar"></span></span>
+        </div>
+
+        <div class="hero__status" aria-hidden="true" id="heroStatus">
+          <span class="hero__status-dot"></span>
+          <span id="heroStatusText">Inicializando entorno…</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOCIAL PROOF / LOGO STRIP ============ -->
+    <section class="logos" aria-label="Ecosistema tecnológico">
+      <div class="container">
+        <p class="logos__label">Formación construida sobre el ecosistema profesional de IA</p>
+      </div>
+      <div class="logos__track" role="list">
+        <div class="logos__marquee" id="logoMarquee">
+          <span class="logo" role="listitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.8 3h3.6L24 21h-3.7l-1.4-3.8H9.1L7.7 21H4L10.6 3h3.2zm-1.6 3.9L10 13.9h4.5L12.2 6.9zM3.9 3h3.6L1.1 21H0z"/></svg>Anthropic</span>
+          <span class="logo" role="listitem"><i class="logo__spark" aria-hidden="true"></i>Claude</span>
+          <span class="logo logo--mono" role="listitem">claude<b>/</b>code</span>
+          <span class="logo" role="listitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a6 6 0 0 1 6 6v8a6 6 0 0 1-12 0V8a6 6 0 0 1 6-6zm0 2a4 4 0 0 0-4 4v8a4 4 0 0 0 8 0V8a4 4 0 0 0-4-4z"/></svg>Model Context Protocol</span>
+          <span class="logo" role="listitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</span>
+          <span class="logo" role="listitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.6 2.2 22 4.4v15.2l-4.4 2.2-9-8.6-4.6 3.5L2 15.9V8.1l2-.8 4.6 3.5 9-8.6zm0 5.3-5.7 4.5 5.7 4.5V7.5z"/></svg>VS Code</span>
+          <span class="logo" role="listitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 7v10l9 5 9-5V7l-9-5zm0 2.3L18.6 8 12 11.7 5.4 8 12 4.3z"/></svg>Node.js</span>
+          <span class="logo" role="listitem"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="currentColor"/><path d="M8 11h6v1.6h-2.2V17H10v-4.4H8zM15.5 16.9c.5.3 1 .4 1.6.4 1.5 0 2.3-.8 2.3-1.9 0-.9-.5-1.4-1.6-1.8-.8-.3-1.1-.5-1.1-.9s.3-.6.8-.6.9.1 1.4.4l.4-1.3a3.5 3.5 0 0 0-1.8-.4c-1.4 0-2.2.8-2.2 1.9 0 .9.6 1.4 1.6 1.8.8.3 1 .5 1 .9s-.3.7-.9.7-1.2-.2-1.7-.5z" fill="#fff"/></svg>TypeScript</span>
+          <span class="logo" role="listitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.9 2c-5 0-4.7 2.2-4.7 2.2v2.3h4.8v.7H5.2S2 6.8 2 12s2.8 5 2.8 5h1.7v-2.4s-.1-2.8 2.7-2.8h4.7s2.6 0 2.6-2.6V5s.4-3-4.6-3zM9.3 3.6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path fill="currentColor" opacity=".6" d="M12.1 22c5 0 4.7-2.2 4.7-2.2v-2.3H12v-.7h6.8S22 17.2 22 12s-2.8-5-2.8-5h-1.7v2.4s.1 2.8-2.7 2.8h-4.7s-2.6 0-2.6 2.6V19s-.4 3 4.6 3zm2.6-1.6a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>Python</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PODER (pinned features over clip 2) ============ -->
+    <section class="poder" id="poder" aria-label="El poder de Claude Code">
+      <div class="poder__sticky">
+        <video class="poder__video" id="poderVideo" src="assets/video/poder.mp4" poster="assets/video/poder.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <div class="poder__overlay" aria-hidden="true"></div>
+
+        <div class="poder__content container">
+          <div class="poder__head">
+            <p class="eyebrow eyebrow--light"><span class="eyebrow__dot"></span>El poder de Claude Code</p>
+            <div class="poder__steps" aria-hidden="true">
+              <span class="poder__step is-active" data-step="0"></span>
+              <span class="poder__step" data-step="1"></span>
+              <span class="poder__step" data-step="2"></span>
+            </div>
+          </div>
+
+          <div class="poder__panels">
+            <article class="poder__panel is-active" data-panel="0">
+              <span class="poder__index">01</span>
+              <h2 class="poder__title">Desarrolla</h2>
+              <p class="poder__text">Construye software real desde la terminal con un agente que entiende tu repositorio completo, escribe, refactoriza y prueba código a nivel profesional.</p>
+              <ul class="poder__tags"><li>Proyectos end-to-end</li><li>Arquitectura</li><li>Testing</li></ul>
+            </article>
+            <article class="poder__panel" data-panel="1">
+              <span class="poder__index">02</span>
+              <h2 class="poder__title">Automatiza</h2>
+              <p class="poder__text">Diseña flujos de trabajo con agentes, MCP e integraciones que ejecutan tareas complejas de principio a fin, con precisión y velocidad.</p>
+              <ul class="poder__tags"><li>Agentes</li><li>MCP</li><li>Integraciones</li></ul>
+            </article>
+            <article class="poder__panel" data-panel="2">
+              <span class="poder__index">03</span>
+              <h2 class="poder__title">Certifícate</h2>
+              <p class="poder__text">Valida tu dominio con una certificación reconocida en el ecosistema de Anthropic y posiciónate como profesional de IA ante las empresas.</p>
+              <ul class="poder__tags"><li>Examen guiado</li><li>Acreditación</li><li>Posicionamiento</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ METRICS ============ -->
+    <section class="metrics" aria-label="El programa en cifras">
+      <div class="container">
+        <ul class="metrics__grid" id="metrics">
+          <li class="metric" data-reveal>
+            <span class="metric__value"><span class="counter" data-count="4" data-duration="1400">0</span></span>
+            <span class="metric__label">Meses de formación</span>
+          </li>
+          <li class="metric" data-reveal>
+            <span class="metric__value"><span class="counter" data-count="16" data-duration="1800">0</span><span class="metric__suffix">+</span></span>
+            <span class="metric__label">Capacitaciones semanales</span>
+          </li>
+          <li class="metric" data-reveal>
+            <span class="metric__value"><span class="counter" data-count="100" data-duration="2000">0</span><span class="metric__suffix">%</span></span>
+            <span class="metric__label">Soporte de instructores</span>
+          </li>
+          <li class="metric" data-reveal>
+            <span class="metric__value"><span class="counter" data-count="1" data-duration="1000">0</span></span>
+            <span class="metric__label">Certificación en Claude Code</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PROGRAMA / TIMELINE ============ -->
+    <section class="programa section" id="programa" aria-labelledby="programaTitle">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__dot"></span>Estructura del programa</p>
+          <h2 class="section__title" id="programaTitle">Cuatro meses. Un camino claro hacia la certificación.</h2>
+          <p class="section__lead">Aprendizaje progresivo, proyectos prácticos y acompañamiento de instructores en cada etapa, hasta el día del examen.</p>
+        </div>
+
+        <ol class="timeline" id="timeline">
+          <div class="timeline__rail" aria-hidden="true"><span class="timeline__progress" id="timelineProgress"></span></div>
+
+          <li class="tl" data-reveal>
+            <div class="tl__marker"><span>01</span></div>
+            <div class="tl__card">
+              <p class="tl__month">Mes 1</p>
+              <h3 class="tl__title">Fundamentos de desarrollo con IA</h3>
+              <p class="tl__text">Domina Claude Code desde la terminal: contexto, prompts de ingeniería, gestión de repositorios y buenas prácticas de un desarrollador asistido por IA.</p>
+              <ul class="tl__list"><li>Configuración profesional del entorno</li><li>Primer proyecto guiado</li><li>Sesiones semanales en vivo</li></ul>
+            </div>
+          </li>
+          <li class="tl" data-reveal>
+            <div class="tl__marker"><span>02</span></div>
+            <div class="tl__card">
+              <p class="tl__month">Mes 2</p>
+              <h3 class="tl__title">Proyectos prácticos del mundo real</h3>
+              <p class="tl__text">Construye aplicaciones completas con arquitectura, pruebas y despliegue. Cada proyecto se revisa con feedback directo de instructores.</p>
+              <ul class="tl__list"><li>Aplicaciones full-stack con IA</li><li>Revisión de código profesional</li><li>Portafolio verificable</li></ul>
+            </div>
+          </li>
+          <li class="tl" data-reveal>
+            <div class="tl__marker"><span>03</span></div>
+            <div class="tl__card">
+              <p class="tl__month">Mes 3</p>
+              <h3 class="tl__title">Automatización, agentes y MCP</h3>
+              <p class="tl__text">Diseña agentes y flujos automatizados conectados a herramientas reales mediante Model Context Protocol, integraciones y pipelines.</p>
+              <ul class="tl__list"><li>Agentes autónomos</li><li>Servidores MCP e integraciones</li><li>Automatización de procesos empresariales</li></ul>
+            </div>
+          </li>
+          <li class="tl" data-reveal>
+            <div class="tl__marker tl__marker--final"><span>04</span></div>
+            <div class="tl__card tl__card--final">
+              <p class="tl__month">Mes 4</p>
+              <h3 class="tl__title">Preparación de examen y certificación</h3>
+              <p class="tl__text">Guía de examen, simulacros y sesiones de refuerzo con instructores. Te acompañamos hasta que apruebes tu certificación en Claude Code.</p>
+              <ul class="tl__list"><li>Guía oficial de preparación</li><li>Simulacros evaluados</li><li>Acreditación por Anthropic</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ TRANSFORMACIÓN ============ -->
+    <section class="transform section section--dark" id="transformacion" aria-labelledby="transformTitle">
+      <div class="transform__glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section__head section__head--light" data-reveal>
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__dot"></span>Transformación profesional</p>
+          <h2 class="section__title" id="transformTitle">De aprender IA a ser un profesional certificado en Claude Code.</h2>
+          <p class="section__lead">Un recorrido diseñado para cambiar lo que sabes hacer, lo que puedes demostrar y el lugar que ocupas en el mercado.</p>
+        </div>
+
+        <div class="journey" id="journey">
+          <div class="journey__line" aria-hidden="true"><span id="journeyProgress"></span></div>
+          <article class="journey__stage" data-reveal>
+            <span class="journey__num">Etapa 1</span>
+            <h3>Aprendes</h3>
+            <p>Comprendes cómo trabaja un desarrollador asistido por IA y ejecutas tus primeras tareas reales con Claude Code.</p>
+          </article>
+          <article class="journey__stage" data-reveal>
+            <span class="journey__num">Etapa 2</span>
+            <h3>Construyes</h3>
+            <p>Desarrollas proyectos completos, automatizas procesos y acumulas evidencia profesional en tu portafolio.</p>
+          </article>
+          <article class="journey__stage journey__stage--final" data-reveal>
+            <span class="journey__num">Etapa 3</span>
+            <h3>Te certificas</h3>
+            <p>Apruebas tu certificación, obtienes acreditación por Anthropic y te posicionas como talento IA ante empresas.</p>
+          </article>
+        </div>
+
+        <div class="transform__outcome" data-reveal>
+          <div class="transform__code" aria-hidden="true">
+            <span class="transform__code-bar"><i></i><i></i><i></i></span>
+            <pre><code><span class="c-prompt">$</span> claude <span class="c-flag">"despliega el proyecto y genera el reporte de pruebas"</span>
+<span class="c-ok">✓</span> 42 archivos analizados
+<span class="c-ok">✓</span> 128 pruebas aprobadas
+<span class="c-ok">✓</span> Despliegue completado <span class="c-dim">— 2m 14s</span></code></pre>
+          </div>
+          <div class="transform__copy">
+            <h3>Capaz de desarrollar proyectos reales con Anthropic Claude.</h3>
+            <p>Al terminar, no solo entiendes la IA: la utilizas para entregar software funcional, con estándares profesionales y una certificación que lo respalda.</p>
+            <button class="btn btn--light" data-cta data-magnetic>Quiero certificarme</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BENEFICIOS ============ -->
+    <section class="benefits section" id="beneficios" aria-labelledby="benefitsTitle">
+      <div class="benefits__bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__dot"></span>Beneficios</p>
+          <h2 class="section__title" id="benefitsTitle">Todo lo que necesitas para certificarte y crecer.</h2>
+        </div>
+
+        <ul class="glass-grid" id="benefitsGrid">
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H4zM8 21h8M12 16v5" /></svg></span><h3>Capacitación semanal</h3><p>Sesiones en vivo cada semana con práctica guiada y resolución de dudas en tiempo real.</p></li>
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><h3>Soporte de instructores</h3><p>Acompañamiento personalizado de instructores expertos durante todo el programa.</p></li>
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h6M9 17h6"/></svg></span><h3>Guía de examen</h3><p>Material de preparación, simulacros y estrategia para aprobar la certificación.</p></li>
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4zM4 7l8 6 8-6M9 3h6"/></svg></span><h3>Proyectos prácticos</h3><p>Desarrolla proyectos reales que se convierten en tu portafolio profesional.</p></li>
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M10 21v-6h4v6"/></svg></span><h3>Posicionamiento de talento IA</h3><p>Programa de vinculación para posicionarte como talento de IA en empresas.</p></li>
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="6"/><path d="M8.5 15.5 7 22l5-3 5 3-1.5-6.5"/></svg></span><h3>Acreditación por Anthropic</h3><p>Certificación con acreditación del creador de Claude, reconocida en el ecosistema.</p></li>
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/></svg></span><h3>Comunidad profesional</h3><p>Red de profesionales certificados con quienes compartir proyectos y oportunidades.</p></li>
+          <li class="glass" data-reveal data-spotlight><span class="glass__icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 11l10-4M7 13l10 4"/></svg></span><h3>Plataforma de networking</h3><p>Acceso a una plataforma para conectar con empresas, instructores y colegas.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIOS ============ -->
+    <section class="testimonials section" id="testimonios" aria-labelledby="testimonialsTitle">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__dot"></span>Testimonios</p>
+          <h2 class="section__title" id="testimonialsTitle">Profesionales que ya dieron el siguiente paso.</h2>
+        </div>
+
+        <div class="testi__grid" id="testimonialGrid">
+          <article class="testi" data-reveal data-spotlight>
+            <div class="testi__quote" aria-hidden="true">“</div>
+            <p class="testi__text">Llegué sabiendo programar, pero no cómo trabajar con IA de forma profesional. Hoy entrego proyectos completos en la mitad del tiempo y mi equipo me pidió liderar la adopción de Claude Code.</p>
+            <footer class="testi__author">
+              <img class="testi__avatar" src="assets/img/avatar-1.jpg" alt="" width="56" height="56" loading="lazy">
+              <div><strong>Mariana Ortega</strong><span>Ingeniera de software · Fintech, CDMX</span></div>
+              <span class="testi__badge">Certificada</span>
+            </footer>
+          </article>
+          <article class="testi" data-reveal data-spotlight>
+            <div class="testi__quote" aria-hidden="true">“</div>
+            <p class="testi__text">La guía de examen y los simulacros hicieron la diferencia. Aprobé a la primera y la acreditación abrió conversaciones con empresas que antes no me respondían.</p>
+            <footer class="testi__author">
+              <img class="testi__avatar" src="assets/img/avatar-2.jpg" alt="" width="56" height="56" loading="lazy">
+              <div><strong>Diego Salazar</strong><span>Desarrollador backend · Guadalajara</span></div>
+              <span class="testi__badge">Certificado</span>
+            </footer>
+          </article>
+          <article class="testi" data-reveal data-spotlight>
+            <div class="testi__quote" aria-hidden="true">“</div>
+            <p class="testi__text">Venía de producto, no de código. Con el soporte de los instructores construí un agente que automatiza reportes para mi área. Ahora coordino proyectos de IA en la empresa.</p>
+            <footer class="testi__author">
+              <img class="testi__avatar" src="assets/img/avatar-3.jpg" alt="" width="56" height="56" loading="lazy">
+              <div><strong>Laura Beltrán</strong><span>Product Manager · Monterrey</span></div>
+              <span class="testi__badge">Certificada</span>
+            </footer>
+          </article>
+          <article class="testi" data-reveal data-spotlight>
+            <div class="testi__quote" aria-hidden="true">“</div>
+            <p class="testi__text">Pasé de analizar datos a desarrollar soluciones con IA. El programa de posicionamiento de talento me conectó con la empresa donde hoy trabajo como AI Developer.</p>
+            <footer class="testi__author">
+              <img class="testi__avatar" src="assets/img/avatar-4.jpg" alt="" width="56" height="56" loading="lazy">
+              <div><strong>Andrés Villanueva</strong><span>AI Developer · Querétaro</span></div>
+              <span class="testi__badge">Certificado</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INVERSIÓN ============ -->
+    <section class="pricing section" id="inversion" aria-labelledby="pricingTitle">
+      <div class="container">
+        <div class="pricing__layout">
+          <div class="pricing__copy" data-reveal>
+            <p class="eyebrow"><span class="eyebrow__dot"></span>Inversión</p>
+            <h2 class="section__title" id="pricingTitle">Una inversión en tu carrera, no un curso más.</h2>
+            <p class="section__lead">La certificación en Claude Code te posiciona en una de las especialidades con mayor demanda. AI LAB te acompaña hasta que apruebes.</p>
+
+            <ul class="value-list">
+              <li><span class="value-list__icon">01</span><div><strong>Acompañamiento hasta certificarte</strong><p>Si necesitas más preparación, seguimos contigo. Sin costo adicional.</p></div></li>
+              <li><span class="value-list__icon">02</span><div><strong>Portafolio de proyectos reales</strong><p>Evidencia verificable de lo que sabes construir con IA.</p></div></li>
+              <li><span class="value-list__icon">03</span><div><strong>Posicionamiento ante empresas</strong><p>Programa de talento IA para conectar con oportunidades laborales.</p></div></li>
+            </ul>
+          </div>
+
+          <div class="price-card" data-reveal data-spotlight>
+            <div class="price-card__glow" aria-hidden="true"></div>
+            <p class="price-card__label">Certificación en Claude Code · 4 meses</p>
+            <div class="price-card__amount">
+              <span class="price-card__currency">$</span>
+              <span class="price-card__number" id="priceNumber">8,000</span>
+              <span class="price-card__mxn">MXN</span>
+            </div>
+            <p class="price-card__note">Inversión total del programa</p>
+
+            <ul class="price-card__list">
+              <li>4 meses de formación profesional</li>
+              <li>Capacitaciones semanales en vivo</li>
+              <li>Soporte de instructores</li>
+              <li>Guía de examen y simulacros</li>
+              <li>Acreditación por Anthropic</li>
+              <li>Comunidad y plataforma de networking</li>
+            </ul>
+
+            <button class="btn btn--primary btn--large btn--block" data-cta data-magnetic id="pricingCta">Quiero certificarme</button>
+
+            <p class="price-card__guarantee">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 9-8 10-4.6-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              AI LAB te brinda soporte hasta que apruebes exitosamente la certificación.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq section" id="faq" aria-labelledby="faqTitle">
+      <div class="container container--narrow">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__dot"></span>Preguntas frecuentes</p>
+          <h2 class="section__title" id="faqTitle">Lo que necesitas saber antes de empezar.</h2>
+        </div>
+
+        <div class="accordion" id="faqAccordion">
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">¿Qué certificación obtengo al terminar?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-1" role="region" aria-labelledby="faq-1-btn"><div class="acc__body"><p>Obtienes la Certificación en Claude Code, con acreditación por Anthropic, que valida tu capacidad para desarrollar proyectos reales con inteligencia artificial y Claude Code de forma profesional.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">¿Cuánto dura el programa?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-2" role="region" aria-labelledby="faq-2-btn"><div class="acc__body"><p>El programa dura 4 meses. Está estructurado en etapas progresivas: fundamentos, proyectos prácticos, automatización con agentes y preparación para el examen de certificación.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">¿Cómo funcionan las capacitaciones semanales?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-3" role="region" aria-labelledby="faq-3-btn"><div class="acc__body"><p>Cada semana tienes una sesión en vivo con instructores donde se presentan conceptos, se desarrollan ejercicios prácticos y se resuelven dudas. Las sesiones quedan grabadas para que puedas repasarlas.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">¿Qué tipo de soporte ofrecen los instructores?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-4" role="region" aria-labelledby="faq-4-btn"><div class="acc__body"><p>Acompañamiento durante todo el programa: revisión de proyectos, resolución de dudas técnicas, sesiones de refuerzo y orientación específica para la preparación del examen.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">¿Cómo me preparan para el examen?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn"><div class="acc__body"><p>Con una guía de examen estructurada, simulacros evaluados y sesiones de repaso dirigidas por instructores durante el cuarto mes, enfocadas en los temas y habilidades que evalúa la certificación.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-6" id="faq-6-btn">¿Qué significa la acreditación por Anthropic?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-6" role="region" aria-labelledby="faq-6-btn"><div class="acc__body"><p>Significa que tu certificación está respaldada por Anthropic, la empresa creadora de Claude, lo que le da credibilidad y reconocimiento dentro del ecosistema profesional de inteligencia artificial.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-7" id="faq-7-btn">¿Qué proyectos voy a desarrollar?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-7" role="region" aria-labelledby="faq-7-btn"><div class="acc__body"><p>Proyectos reales de software asistido por IA: aplicaciones completas, agentes que automatizan procesos e integraciones con herramientas mediante Model Context Protocol. Todos forman parte de tu portafolio profesional.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-8" id="faq-8-btn">¿Cómo funciona la comunidad y el networking?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-8" role="region" aria-labelledby="faq-8-btn"><div class="acc__body"><p>Formas parte de una comunidad de profesionales certificados y accedes a una plataforma de networking para conectar con instructores, colegas y empresas que buscan talento en IA.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-9" id="faq-9-btn">¿En qué consiste el programa de posicionamiento de talento IA en empresas?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-9" role="region" aria-labelledby="faq-9-btn"><div class="acc__body"><p>Es un programa que presenta tu perfil certificado y tu portafolio ante empresas que están adoptando inteligencia artificial, con el objetivo de conectarte con oportunidades profesionales reales.</p></div></div>
+          </div>
+          <div class="acc" data-reveal>
+            <h3><button class="acc__trigger" aria-expanded="false" aria-controls="faq-10" id="faq-10-btn">¿Qué pasa si no apruebo la certificación a la primera?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-10" role="region" aria-labelledby="faq-10-btn"><div class="acc__body"><p>AI LAB te brinda soporte hasta que apruebes exitosamente. Continúas recibiendo acompañamiento de instructores, material de preparación y sesiones de refuerzo sin costo adicional.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA (over clip 3) ============ -->
+    <section class="final" id="final" aria-labelledby="finalTitle">
+      <video class="final__video" id="finalVideo" src="assets/video/resultado.mp4" poster="assets/video/resultado.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <div class="final__overlay" aria-hidden="true"></div>
+      <div class="container final__content">
+        <p class="eyebrow eyebrow--light" data-reveal><span class="eyebrow__dot"></span>El resultado</p>
+        <h2 class="final__title" id="finalTitle" data-reveal>Tu próximo nivel profesional comienza aquí.</h2>
+        <p class="final__lead" data-reveal>Cupo limitado por generación. Asegura tu lugar y empieza a construir con Claude Code.</p>
+        <div data-reveal>
+          <button class="btn btn--primary btn--xl" data-cta data-magnetic id="finalCta">
+            Quiero certificarme en Claude Code
+            <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__mark" aria-hidden="true"></span>
+        <span>AI LAB</span>
+      </div>
+      <p class="footer__text">Certificación en Claude Code · Programa profesional de 4 meses. Claude y Claude Code son marcas de Anthropic.</p>
+      <nav class="footer__links" aria-label="Enlaces del pie">
+        <a href="#programa">Programa</a>
+        <a href="#inversion">Inversión</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL ============ -->
+  <div class="modal" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__card">
+      <button class="modal__close" type="button" aria-label="Cerrar" data-modal-close>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__form-view" id="modalForm">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>Certificación en Claude Code</p>
+        <h2 class="modal__title" id="modalTitle">Solicita tu lugar</h2>
+        <p class="modal__lead">Déjanos tus datos y un asesor de AI LAB te contactará para resolver dudas y confirmar tu inscripción.</p>
+        <form class="form" id="leadForm" novalidate>
+          <label class="field"><span>Nombre completo</span><input type="text" name="nombre" id="fNombre" autocomplete="name" required></label>
+          <label class="field"><span>Correo electrónico</span><input type="email" name="email" id="fEmail" autocomplete="email" required></label>
+          <label class="field"><span>WhatsApp</span><input type="tel" name="telefono" id="fTel" autocomplete="tel" inputmode="tel" placeholder="+52"></label>
+          <p class="form__error" id="formError" role="alert" hidden></p>
+          <button class="btn btn--primary btn--large btn--block" type="submit" id="formSubmit">Enviar solicitud</button>
+          <p class="form__fine">Inversión: $8,000 MXN · Soporte hasta que apruebes la certificación.</p>
+        </form>
+      </div>
+      <div class="modal__success" id="modalSuccess" hidden>
+        <span class="modal__check" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2 class="modal__title">Solicitud recibida</h2>
+        <p class="modal__lead">Gracias, <strong id="successName"></strong>. Un asesor te contactará en las próximas horas para confirmar tu lugar en la próxima generación.</p>
+        <button class="btn btn--ghost-dark" type="button" data-modal-close>Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

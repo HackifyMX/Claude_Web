@@ -1,0 +1,73 @@
+name: Fetch and process landing assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      hero_url:
+        description: "Hero clip (mp4) URL — scroll-scrub frame source"
+        required: true
+      poder_url:
+        description: "Clip 2 (mp4) URL — El poder de Claude Code"
+        required: true
+      resultado_url:
+        description: "Clip 3 (mp4) URL — El resultado"
+        required: true
+      avatar_urls:
+        description: "Comma-separated testimonial headshot URLs (4)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg webp > /dev/null
+
+      - name: Download sources
+        env:
+          HERO: ${{ inputs.hero_url }}
+          PODER: ${{ inputs.poder_url }}
+          RESULTADO: ${{ inputs.resultado_url }}
+          AVATARS: ${{ inputs.avatar_urls }}
+        run: |
+          set -e
+          mkdir -p raw
+          curl -sSL -o raw/hero.mp4 "$HERO"
+          curl -sSL -o raw/poder.mp4 "$PODER"
+          curl -sSL -o raw/resultado.mp4 "$RESULTADO"
+          i=1
+          IFS=',' read -ra LIST <<< "$AVATARS"
+          for u in "${LIST[@]}"; do curl -sSL -o "raw/avatar-$i.png" "$(echo "$u" | xargs)"; i=$((i+1)); done
+          ls -la raw
+
+      - name: Process media
+        run: |
+          set -e
+          mkdir -p assets/hero/frames assets/video assets/img
+          rm -f assets/hero/frames/*.webp
+          # Hero: 15 fps frame sequence for the scroll scrub
+          ffmpeg -y -v error -i raw/hero.mp4 -vf "fps=15,scale=1600:900:flags=lanczos" -f image2 -c:v libwebp -quality 80 -compression_level 6 assets/hero/frames/frame_%04d.webp
+          ffmpeg -y -v error -i raw/hero.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 assets/hero/poster.jpg
+          # Background clips: silent, web-optimized H.264
+          ffmpeg -y -v error -i raw/poder.mp4 -an -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 assets/video/poder.mp4
+          ffmpeg -y -v error -i raw/resultado.mp4 -an -c:v libx264 -preset slow -crf 23 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 assets/video/resultado.mp4
+          ffmpeg -y -v error -i raw/poder.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 assets/video/poder.jpg
+          ffmpeg -y -v error -i raw/resultado.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 assets/video/resultado.jpg
+          for i in 1 2 3 4; do ffmpeg -y -v error -i "raw/avatar-$i.png" -vf "scale=320:320:flags=lanczos" -q:v 3 "assets/img/avatar-$i.jpg"; done
+          echo "frames: $(ls assets/hero/frames | wc -l)"
+          du -sh assets/*
+
+      - name: Commit assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git commit -m "Add processed landing media assets [skip ci]" || echo "nothing to commit"
+          git push origin HEAD:${{ github.ref_name }}
