@@ -5,6 +5,8 @@
   "description": "Landing page cinematográfica — Certificación en Claude Code (AI LAB)",
   "scripts": {
     "start": "npx --yes http-server -p 8080 -c-1 -o .",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "start:enterprise": "npx --yes http-server enterprise -p 8081 -c-1 -o .",
+    "verify:enterprise": "node enterprise/scripts/verify.mjs"
   }
 }

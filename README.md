@@ -46,3 +46,24 @@ Para regenerarlo después de editar `docs/propuesta-de-valor.html`:
 ```bash
 node docs/render-pdf.mjs
 ```
+
+## AI LAB ENTERPRISE — landing page (`enterprise/`)
+
+Landing cinematográfica independiente para la categoría **AI Powered Enterprise** (`enterprise/index.html`, `enterprise/css/styles.css`, `enterprise/js/main.js`). Sin dependencias.
+
+```bash
+npm run start:enterprise      # http://127.0.0.1:8081
+npm run verify:enterprise     # 46 checks de Playwright (hero scrub, agentes, orquestador, timeline, CTAs, responsive, performance)
+```
+
+| Sección | Implementación |
+|---|---|
+| Hero | Clip 01 como secuencia de 97 frames WebP (12 fps) en `<canvas>` + red SVG de agentes que se ensambla con el scroll: FINANCE → SUPPORT → MARKET INTELLIGENCE → CONTENT → SALES → OPERATIONS → enlaces → capa de orquestación → workflows → HUD final. |
+| As featured in | Marquee monocromo: Forbes · Entrepreneur · Shark Tank · Expansión · Yahoo News. |
+| Category | Diagrama ONE BRAIN → ZERO FRICTION → A COORDINATED WORKFORCE. |
+| Layer 01–04 | Grafo de conocimiento, mapa de integraciones, ejecución de agentes (sección fijada, activación secuencial + bus de comunicación + workflow compartido) y orquestador multi‑agente con Clip 02 de fondo. |
+| How it works | Timeline horizontal ligado al scroll (DIAGNOSE → ARCHITECT → DEPLOY → SCALE). |
+| Success stories | Tarjetas Before → Built → Result con **placeholders**; sustituir únicamente con cifras verificadas. |
+| Final CTA | Clip 03 de fondo, HUD de control y modal de diagnóstico (envío simulado en `js/main.js`). |
+
+Los tres clips (Seedance 2.0 · std · 1080p · 16:9 · 8 s · sin audio) están referenciados en `enterprise/assets/sources.json`; el workflow `.github/workflows/fetch-enterprise-assets.yml` los descarga y genera frames, MP4/WebM y pósters en `enterprise/assets/`.

@@ -156,7 +156,7 @@
   function loadFrames() {
     // Coarse-to-fine order so scrubbing is usable early; nearestLoaded() fills gaps.
     const order = [];
-    const seen = new Set();
+    const seen = new Set([0]);
     for (const step of [16, 8, 4, 2, 1]) {
       for (let i = 0; i < FRAME_COUNT; i += Math.max(step, FRAME_STEP)) { if (!seen.has(i)) { seen.add(i); order.push(i); } }
     }
@@ -179,7 +179,7 @@
 
   // Network choreography thresholds
   const AG = [0.10, 0.19, 0.28, 0.37, 0.45, 0.53];               // FINANCE, SUPPORT, MARKET INTEL, CONTENT, SALES, OPERATIONS
-  const LK = [0.31, 0.55, 0.60, 0.65];                           // lnk0 Market→Finance (early), then the rest
+  const LK = [0.31, 0.53, 0.57, 0.61];                           // lnk0 Market→Finance (early), then the rest (all drawn before the orchestrator)
   const ORCH_AT = 0.68, WF_AT = 0.78, FINAL_AT = 0.90;
   const STAGES = [[0, '00', 'SYSTEM IDLE'], [0.10, '01', 'AGENT ACTIVATION'], [0.53, '02', 'AGENTS COMMUNICATING'], [0.68, '03', 'ORCHESTRATION LAYER ONLINE'], [0.78, '04', 'WORKFLOWS EXECUTING'], [0.90, '05', 'AI POWERED ENTERPRISE']];
   const LOG = [
@@ -284,7 +284,7 @@
     heroFinal.classList.toggle('is-in', fin);
     heroHud.classList.toggle('is-in', fin);
     state.heroFinal = fin;
-    net.style.opacity = 1 - 0.45 * smooth(FINAL_AT, 1, p);
+    net.style.opacity = 1 - 0.78 * smooth(FINAL_AT, 1, p);
     if (fin && !state.hudCounted) { state.hudCounted = true; runCounters(heroHud); }
   }
 
@@ -460,16 +460,16 @@
     // Phase 3 — shared workflow executes
     let step = 0;
     if (p >= 0.70) step = Math.min(SEQ.length, Math.floor((p - 0.70) / 0.042) + 1);
+    const complete = step >= SEQ.length && p >= 0.70 + SEQ.length * 0.042 + 0.02;
     SEQ.forEach((ci, k) => {
       const c = cards[ci]; const st = $('.acard__state', c); const task = $('.acard__task', c);
-      const active = step === k + 1, done = step > k + 1;
+      const active = step === k + 1 && !complete, done = step > k + 1 || complete;
       c.classList.toggle('is-busy', active); c.classList.toggle('is-done', done);
       stubs[ci].classList.toggle('is-hot', active);
       if (active) { st.textContent = 'EXECUTING'; task.textContent = task.dataset.task; }
       else if (done) { st.textContent = 'HANDOFF COMPLETE'; task.textContent = task.dataset.task; }
       else if (c.classList.contains('is-on')) { st.textContent = 'ONLINE'; task.textContent = '—'; }
     });
-    const complete = step >= SEQ.length && p >= 0.70 + SEQ.length * 0.042 + 0.02;
     const phase = complete ? 4 : (step > 0 ? 3 : (busT > 0 ? 2 : (on > 0 ? 1 : 0)));
     state.execPhase = phase; state.execStep = step;
     const txt = phase === 0 ? 'AWAITING ACTIVATION' : phase === 1 ? `ACTIVATING AGENTS · ${on}/6 ONLINE` : phase === 2 ? 'AGENTS COMMUNICATING · LINKS ESTABLISHED' : phase === 3 ? `EXECUTING SHARED WORKFLOW · HANDOFF ${step}/6` : 'EXECUTION COMPLETE · HUMAN CHECKPOINT CLEARED';
@@ -490,7 +490,7 @@
      --------------------------------------------------------- */
   const orchSvg = $('#orchSvg');
   if (orchSvg) {
-    const CX = 400, CY = 250, RX = 300, RY = 180;
+    const CX = 400, CY = 250, RX = 262, RY = 176;
     const NAMES = ['SALES', 'FINANCE', 'OPERATIONS', 'SUPPORT', 'MARKET INTEL', 'STRATEGY', 'CONTENT', 'EXEC REPORT', 'KNOWLEDGE BASE', 'RESOLUTION', 'HUMAN'];
     const FLOWS = [[0, 1, 2, 3], [4, 5, 6, 7], [3, 8, 9, 10]];
     const VERBS = ['RECEIVES', 'ANALYZES', 'DELEGATES', 'COORDINATES', 'VALIDATES', 'EXECUTES', 'ESCALATES'];
@@ -567,7 +567,7 @@
     const x = isMobile() ? 0 : -max * p;
     state.howX = x;
     howTrack.style.transform = `translate3d(${x}px,0,0)`;
-    const idx = Math.min(4, Math.floor(p * 5.4));
+    const idx = Math.min(4, Math.round(p * 4));
     state.howIndex = idx;
     howSteps.forEach((s, i) => s.classList.toggle('is-on', i <= idx));
     howProg.forEach((s, i) => s.classList.toggle('is-on', i <= idx));

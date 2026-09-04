@@ -5,7 +5,6 @@ on:
   push:
     paths:
       - "enterprise/assets/sources.json"
-      - ".github/workflows/fetch-enterprise-assets.yml"
 
 permissions:
   contents: write
@@ -42,6 +41,9 @@ jobs:
           # CLIP 02 / CLIP 03 → silent, web-optimized H.264 background loops + posters
           ffmpeg -y -v error -i raw/orchestration.mp4 -an -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 $A/video/orchestration.mp4
           ffmpeg -y -v error -i raw/enterprise.mp4 -an -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 $A/video/enterprise.mp4
+          # WebM (VP9) fallbacks for browsers without H.264
+          ffmpeg -y -v error -i raw/orchestration.mp4 -an -c:v libvpx-vp9 -crf 34 -b:v 0 -row-mt 1 -vf scale=1920:1080 $A/video/orchestration.webm
+          ffmpeg -y -v error -i raw/enterprise.mp4 -an -c:v libvpx-vp9 -crf 32 -b:v 0 -row-mt 1 -vf scale=1920:1080 $A/video/enterprise.webm
           ffmpeg -y -v error -i raw/orchestration.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/video/orchestration.jpg
           ffmpeg -y -v error -ss 1 -i raw/enterprise.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/video/enterprise.jpg
           echo "frames: $(ls $A/hero/frames | wc -l)"
