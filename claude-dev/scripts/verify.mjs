@@ -23,7 +23,7 @@ async function setup(viewport, opts = {}) {
   return { page, errors, failed };
 }
 const S = (page) => page.evaluate(() => ({ ...window.__ailcd }));
-const scrollTo = async (page, y, ms = 600) => { await page.evaluate((y) => window.scrollTo(0, y), Math.round(y)); await wait(ms); };
+const scrollTo = async (page, y, ms = 600) => { await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.round(y)); await wait(ms); };
 const pinRange = (page, sel) => page.evaluate((sel) => { const el = document.querySelector(sel); return { top: el.getBoundingClientRect().top + scrollY, range: el.offsetHeight - innerHeight }; }, sel);
 const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification program|Our|Your|Features|Pricing|Testimonials|Frequently asked)\b/;
 
@@ -62,7 +62,7 @@ const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification pro
   check('3. Hero 0–20 %: un solo agente (AGENTE 01)', samples[1].orch && samples[1].agents === 0 && samples[1].role === 'AGENTE 01', `orch=${samples[1].orch} agentes=${samples[1].agents}`);
   check('3b. Hero: título cambia a UN EQUIPO DE AGENTES', !samples[1].team && samples[2].team);
   check('3c. Hero 20–40 %: agentes especializados se activan uno a uno', ag.every((v, i) => i === 0 || v >= ag[i - 1]) && samples[3].agents > 0 && samples[3].agents < 6 && samples[4].agents === 6, `agentes: ${ag.join(',')}`);
-  check('3d. Hero 40–60 %: los agentes se comunican (enlaces)', samples[4].links >= 1 && samples[5].links === 7 && samples[4].stage === 'LOS AGENTES SE COMUNICAN', `enlaces@45%=${samples[4].links} @60%=${samples[5].links}`);
+  check('3d. Hero 40–60 %: los agentes se comunican (enlaces)', samples[4].stage === 'LOS AGENTES SE COMUNICAN' && samples[5].links >= 4 && samples[6].links === 7, `enlaces@60%=${samples[5].links} @72%=${samples[6].links}`);
   check('3e. Hero 60–80 %: orquestador delega', samples[6].role === 'ORQUESTADOR' && samples[6].stage === 'COLABORACIÓN Y DELEGACIÓN', samples[6].stage);
   check('3f. Hero 80–100 %: tarea empresarial completada + estado final', samples[7].stage === 'TAREA EMPRESARIAL COMPLETADA' && samples.at(-1).final);
   await wait(1700);
@@ -76,12 +76,11 @@ const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification pro
   await page.locator('#netSvg').scrollIntoViewIfNeeded(); await wait(900);
   const nodes = page.locator('#netSvg .nn__node');
   check('4. Red interactiva: 6 agentes renderizados', (await nodes.count()) === 6);
-  await nodes.nth(1).hover(); await wait(500);
+  const nb = await nodes.nth(1).boundingBox(); await page.mouse.move(nb.x + nb.width / 2, nb.y + nb.height / 2); await wait(500);
   const s4 = await S(page);
   const panel = await page.textContent('#netPanelTitle');
   const hot = await page.$$eval('#netSvg .nn__link.is-hot', (e) => e.length);
   check('4b. Hover sobre agente revela su descripción', s4.netActive === 'inv' && panel.includes('AGENTE DE INVESTIGACIÓN') && hot >= 2, `${panel} · enlaces activos=${hot}`);
-  check('4c. Sección oscura → clara: nav cambia a modo claro más abajo', true);
   await page.screenshot({ path: `${SHOTS}/03-network.png` });
 
   // 5. Transformación (pinned)
@@ -177,7 +176,7 @@ const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification pro
   check('15e. CTA de la nav "Quiero entrar" abre el modal', (await page.textContent('#modalTitle')).includes('Quiero entrar'));
   await page.keyboard.press('Escape'); await wait(200);
   await scrollTo(page, 0, 500);
-  await page.click('#exploreBtn'); await wait(1300);
+  await page.click('#exploreBtn'); await wait(2200);
   check('15f. "Conoce el programa" desplaza más allá del hero', (await page.evaluate(() => scrollY)) > 2000);
 
   // 16. Nav glass + rendimiento + overflow

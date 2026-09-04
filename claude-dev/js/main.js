@@ -264,7 +264,7 @@
     if (p >= LK[0] && !prefersReduced) liveAdd(heroLive); else { liveRemove(heroLive); packets.forEach((c) => { c.style.opacity = 0; }); }
 
     // Estado final
-    const fin = p >= FINAL_AT; heroFinal.classList.toggle('is-in', fin); state.heroFinal = fin;
+    const fin = p >= FINAL_AT; heroFinal.classList.toggle('is-in', fin); hero.classList.toggle('is-final', fin); state.heroFinal = fin;
     net.style.opacity = 1 - 0.88 * smooth(FINAL_AT, 1, p);
     if (fin && !state.hudCounted) { state.hudCounted = true; runCounters(heroHud); }
   }
@@ -357,7 +357,7 @@
   const transform = $('#transformacion');
   const stages = $$('#trStages .stage'), trRail = $('#trRail'), trIdx = $('#trIdx');
   function trUpdate(p) {
-    const idx = clamp(Math.floor(p * 6.4), 0, 5);
+    const idx = clamp(Math.floor(p * 6), 0, 5);
     if (idx !== state.trIndex || p === 0) { state.trIndex = idx; stages.forEach((s, i) => { s.classList.toggle('is-active', i === idx); s.classList.toggle('is-done', i < idx); }); trIdx.textContent = String(idx + 1).padStart(2, '0'); }
     trRail.style.width = (clamp(p / 0.94, 0, 1) * 100).toFixed(1) + '%';
   }
