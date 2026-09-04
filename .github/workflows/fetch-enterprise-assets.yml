@@ -1,0 +1,58 @@
+name: Fetch and process enterprise landing assets
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "enterprise/assets/sources.json"
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg webp > /dev/null
+
+      - name: Download sources (from enterprise/assets/sources.json)
+        run: |
+          set -e
+          mkdir -p raw
+          curl -sSL -o raw/hero.mp4 "$(jq -r .hero_url enterprise/assets/sources.json)"
+          curl -sSL -o raw/orchestration.mp4 "$(jq -r .orchestration_url enterprise/assets/sources.json)"
+          curl -sSL -o raw/enterprise.mp4 "$(jq -r .enterprise_url enterprise/assets/sources.json)"
+          ls -la raw
+
+      - name: Process media
+        run: |
+          set -e
+          A=enterprise/assets
+          mkdir -p $A/hero/frames $A/video
+          rm -f $A/hero/frames/*.webp
+          # CLIP 01 → 12 fps frame sequence for the scroll-scrubbed hero (96 frames for 8 s)
+          ffmpeg -y -v error -i raw/hero.mp4 -vf "fps=12,scale=1600:900:flags=lanczos" -f image2 -c:v libwebp -quality 78 -compression_level 6 $A/hero/frames/frame_%04d.webp
+          ffmpeg -y -v error -i raw/hero.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/hero/poster.jpg
+          # CLIP 02 / CLIP 03 → silent, web-optimized H.264 background loops + posters
+          ffmpeg -y -v error -i raw/orchestration.mp4 -an -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 $A/video/orchestration.mp4
+          ffmpeg -y -v error -i raw/enterprise.mp4 -an -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 $A/video/enterprise.mp4
+          # WebM (VP9) fallbacks for browsers without H.264
+          ffmpeg -y -v error -i raw/orchestration.mp4 -an -c:v libvpx-vp9 -crf 34 -b:v 0 -row-mt 1 -vf scale=1920:1080 $A/video/orchestration.webm
+          ffmpeg -y -v error -i raw/enterprise.mp4 -an -c:v libvpx-vp9 -crf 32 -b:v 0 -row-mt 1 -vf scale=1920:1080 $A/video/enterprise.webm
+          ffmpeg -y -v error -i raw/orchestration.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/video/orchestration.jpg
+          ffmpeg -y -v error -ss 1 -i raw/enterprise.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/video/enterprise.jpg
+          echo "frames: $(ls $A/hero/frames | wc -l)"
+          du -sh $A/*
+
+      - name: Commit assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add enterprise/assets
+          git commit -m "Add processed enterprise landing media assets [skip ci]" || echo "nothing to commit"
+          git push origin HEAD:${{ github.ref_name }}
