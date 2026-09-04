@@ -7,6 +7,9 @@
     "start": "npx --yes http-server -p 8080 -c-1 -o .",
     "verify": "node scripts/verify.mjs",
     "start:enterprise": "npx --yes http-server enterprise -p 8081 -c-1 -o .",
-    "verify:enterprise": "node enterprise/scripts/verify.mjs"
+    "verify:enterprise": "node enterprise/scripts/verify.mjs",
+    "start:claude-dev": "npx --yes http-server claude-dev -p 8082 -c-1 -o .",
+    "verify:claude-dev": "node claude-dev/scripts/verify.mjs",
+    "build:claude-dev": "node claude-dev/scripts/build-standalone.mjs"
   }
 }
