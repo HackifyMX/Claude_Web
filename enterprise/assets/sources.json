@@ -1,0 +1,11 @@
+{
+  "note": "Source renders for the AI LAB ENTERPRISE landing (Higgsfield · Seedance 2.0, std, 1080p, 16:9, 8s, no audio). The fetch-enterprise-assets workflow processes these into web-ready files under enterprise/assets/.",
+  "hero_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_010731_684855a0-588f-4856-997e-216d8f887a3f.mp4",
+  "orchestration_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_010703_b2fa376c-5f0b-40a3-b10e-97e9b1dd34e3.mp4",
+  "enterprise_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_010731_b69e9793-4155-4e87-a876-169633e93ec7.mp4",
+  "clips": {
+    "hero": "CLIP 01 — THE DIGITAL WORKFORCE (scroll-scrubbed frame sequence, 12 fps)",
+    "orchestration": "CLIP 02 — THE ORCHESTRATION (Layer 04 background)",
+    "enterprise": "CLIP 03 — THE AI POWERED ENTERPRISE (final CTA background)"
+  }
+}

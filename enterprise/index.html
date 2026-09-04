@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI LAB ENTERPRISE — The AI Powered Enterprise</title>
+  <meta name="description" content="Specialized agents. Automated workflows. One orchestration layer running underneath it all. AI LAB ENTERPRISE builds companies that operate with AI." />
+  <meta name="theme-color" content="#0B0B0D" />
+  <meta property="og:title" content="AI LAB ENTERPRISE — Welcome to the AI Powered Enterprise" />
+  <meta property="og:description" content="One company. Multiple specialized agents. One orchestration layer. One AI-powered operating system." />
+  <meta property="og:image" content="assets/hero/poster.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230B0B0D'/%3E%3Cpath d='M16 6l10 10-10 10L6 16z' fill='none' stroke='%23E9B44C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23E9B44C'/%3E%3C/svg%3E" />
+  <link rel="preload" href="assets/fonts/Sora-600.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="assets/fonts/JetBrainsMono-400.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="assets/hero/poster.jpg" as="image" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================ NAV -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="AI LAB ENTERPRISE — home">
+      <span class="nav__mark" aria-hidden="true"></span>
+      <span class="nav__word">AI LAB <b>ENTERPRISE</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#category">Category</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#how">How it works</a>
+      <a href="#proof">Proof</a>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__status mono" id="navStatus"><i></i>SYSTEM NOMINAL</span>
+      <button class="btn btn--sm btn--primary" data-open-modal data-intent="diagnostic">Get Your AI Diagnostic</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================ HERO -->
+    <section class="hero" id="hero" data-frames="96" aria-label="Welcome to the AI Powered Enterprise">
+      <div class="hero__sticky">
+        <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <img class="hero__poster" id="heroPoster" src="assets/hero/poster.jpg" alt="" aria-hidden="true" />
+        <div class="hero__vignette" aria-hidden="true"></div>
+
+        <!-- Agent network overlay (assembles on scroll) -->
+        <svg class="hero__net" id="heroNet" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0L8 4 0 8z" fill="var(--accent)"/>
+            </marker>
+          </defs>
+          <g class="net__grid">
+            <line x1="0" y1="350" x2="1200" y2="350"/>
+            <line x1="600" y1="0" x2="600" y2="700"/>
+          </g>
+          <!-- spokes to orchestrator -->
+          <g class="net__spokes" id="netSpokes">
+            <path data-agent="0" d="M330 200 L600 360"/>
+            <path data-agent="1" d="M870 200 L600 360"/>
+            <path data-agent="2" d="M230 420 L600 360"/>
+            <path data-agent="3" d="M970 420 L600 360"/>
+            <path data-agent="4" d="M430 590 L600 360"/>
+            <path data-agent="5" d="M770 590 L600 360"/>
+          </g>
+          <!-- agent-to-agent communications -->
+          <g class="net__links" id="netLinks">
+            <path id="lnk0" d="M230 420 C 250 330, 300 270, 330 200"/>
+            <path id="lnk1" d="M230 420 C 480 300, 720 300, 970 420"/>
+            <path id="lnk2" d="M870 200 C 900 380, 850 500, 770 590"/>
+            <path id="lnk3" d="M430 590 C 380 470, 360 330, 330 200"/>
+          </g>
+          <!-- packets travelling along links -->
+          <g class="net__packets" id="netPackets">
+            <circle r="4" data-path="lnk0"/>
+            <circle r="4" data-path="lnk1"/>
+            <circle r="4" data-path="lnk2"/>
+            <circle r="4" data-path="lnk3"/>
+          </g>
+          <!-- orchestrator -->
+          <g class="net__orch" id="netOrch" transform="translate(600 360)">
+            <circle class="orch__r3" r="92"/>
+            <circle class="orch__r2" r="60"/>
+            <circle class="orch__r1" r="30"/>
+            <path class="orch__core" d="M0 -12 L12 0 0 12 -12 0z"/>
+            <text class="orch__label" y="120" text-anchor="middle">ORCHESTRATION LAYER</text>
+            <text class="orch__state mono" y="138" text-anchor="middle">STANDBY</text>
+          </g>
+          <!-- agents -->
+          <g class="net__agents" id="netAgents">
+            <g class="agent" data-i="0" transform="translate(330 200)">
+              <path class="agent__shape" d="M0 -22 L22 0 0 22 -22 0z"/><circle class="agent__core" r="4"/>
+              <line class="agent__tick" x1="-30" y1="0" x2="-24" y2="0"/><line class="agent__tick" x1="24" y1="0" x2="30" y2="0"/>
+              <text class="agent__label" y="44" text-anchor="middle">FINANCE AGENT</text>
+              <text class="agent__state" y="60" text-anchor="middle">STANDBY</text>
+            </g>
+            <g class="agent" data-i="1" transform="translate(870 200)">
+              <path class="agent__shape" d="M0 -22 L22 0 0 22 -22 0z"/><circle class="agent__core" r="4"/>
+              <line class="agent__tick" x1="-30" y1="0" x2="-24" y2="0"/><line class="agent__tick" x1="24" y1="0" x2="30" y2="0"/>
+              <text class="agent__label" y="44" text-anchor="middle">SUPPORT AGENT</text>
+              <text class="agent__state" y="60" text-anchor="middle">STANDBY</text>
+            </g>
+            <g class="agent" data-i="2" transform="translate(230 420)">
+              <path class="agent__shape" d="M0 -22 L22 0 0 22 -22 0z"/><circle class="agent__core" r="4"/>
+              <line class="agent__tick" x1="-30" y1="0" x2="-24" y2="0"/><line class="agent__tick" x1="24" y1="0" x2="30" y2="0"/>
+              <text class="agent__label" y="44" text-anchor="middle">MARKET INTELLIGENCE AGENT</text>
+              <text class="agent__state" y="60" text-anchor="middle">STANDBY</text>
+            </g>
+            <g class="agent" data-i="3" transform="translate(970 420)">
+              <path class="agent__shape" d="M0 -22 L22 0 0 22 -22 0z"/><circle class="agent__core" r="4"/>
+              <line class="agent__tick" x1="-30" y1="0" x2="-24" y2="0"/><line class="agent__tick" x1="24" y1="0" x2="30" y2="0"/>
+              <text class="agent__label" y="44" text-anchor="middle">CONTENT AGENT</text>
+              <text class="agent__state" y="60" text-anchor="middle">STANDBY</text>
+            </g>
+            <g class="agent" data-i="4" transform="translate(430 590)">
+              <path class="agent__shape" d="M0 -22 L22 0 0 22 -22 0z"/><circle class="agent__core" r="4"/>
+              <line class="agent__tick" x1="-30" y1="0" x2="-24" y2="0"/><line class="agent__tick" x1="24" y1="0" x2="30" y2="0"/>
+              <text class="agent__label" y="44" text-anchor="middle">SALES AGENT</text>
+              <text class="agent__state" y="60" text-anchor="middle">STANDBY</text>
+            </g>
+            <g class="agent" data-i="5" transform="translate(770 590)">
+              <path class="agent__shape" d="M0 -22 L22 0 0 22 -22 0z"/><circle class="agent__core" r="4"/>
+              <line class="agent__tick" x1="-30" y1="0" x2="-24" y2="0"/><line class="agent__tick" x1="24" y1="0" x2="30" y2="0"/>
+              <text class="agent__label" y="44" text-anchor="middle">OPERATIONS AGENT</text>
+              <text class="agent__state" y="60" text-anchor="middle">STANDBY</text>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Copy -->
+        <div class="hero__copy" id="heroCopy">
+          <p class="eyebrow mono"><span class="eyebrow__dot"></span>INTRODUCING THE AI POWERED ENTERPRISE</p>
+          <h1 class="hero__title">Welcome to the<br/><span>AI Powered Enterprise</span></h1>
+          <p class="hero__sub">Specialized agents. Automated workflows. One orchestration layer running underneath it all. This is what it looks like when a company operates with artificial intelligence — not around it.</p>
+          <div class="hero__actions">
+            <button class="btn btn--primary btn--lg" data-open-modal data-intent="diagnostic"><span>Get Your AI Diagnostic</span></button>
+            <a class="btn btn--ghost btn--lg" href="#featured" id="exploreBtn"><span>Explore the System</span><i class="btn__arrow" aria-hidden="true">↓</i></a>
+          </div>
+          <p class="hero__hint mono" aria-hidden="true">SCROLL TO ACTIVATE THE WORKFORCE</p>
+        </div>
+
+        <!-- Stage label (top-left), stage log (right) -->
+        <div class="hero__stage mono" id="heroStage" aria-live="polite">
+          <span class="hero__stageIdx" id="heroStageIdx">00</span>
+          <span class="hero__stageTxt" id="heroStageTxt">SYSTEM IDLE</span>
+        </div>
+        <ol class="hero__log mono" id="heroLog" aria-hidden="true"></ol>
+
+        <!-- Final state -->
+        <div class="hero__final" id="heroFinal" aria-hidden="true">
+          <p class="hero__finalTag mono">MANY MINDS. ONE SYSTEM.</p>
+          <h2 class="hero__finalTitle">AI POWERED ENTERPRISE</h2>
+        </div>
+        <div class="hud" id="heroHud" aria-hidden="true">
+          <div class="hud__item"><span class="hud__k">AGENTS ONLINE</span><span class="hud__v" data-counter="6" data-pad="2">00</span></div>
+          <div class="hud__item"><span class="hud__k">ACTIVE WORKFLOWS</span><span class="hud__v" data-counter="14" data-pad="2">00</span></div>
+          <div class="hud__item"><span class="hud__k">TASKS EXECUTING</span><span class="hud__v" data-counter="212" data-pad="3">000</span></div>
+          <div class="hud__item"><span class="hud__k">HUMAN CHECKPOINTS</span><span class="hud__v" data-counter="3" data-pad="2">00</span></div>
+          <div class="hud__item hud__item--status"><span class="hud__k">SYSTEM STATUS</span><span class="hud__v"><i class="dot"></i>NOMINAL</span></div>
+        </div>
+
+        <div class="hero__progress" aria-hidden="true"><i id="heroBar"></i></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CREDIBILITY -->
+    <section class="featured" id="featured" aria-label="As featured in">
+      <p class="featured__label mono">AS FEATURED IN</p>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span class="logo logo--forbes">Forbes</span><i class="sep"></i>
+          <span class="logo logo--entrepreneur">Entrepreneur</span><i class="sep"></i>
+          <span class="logo logo--shark">Shark Tank</span><i class="sep"></i>
+          <span class="logo logo--expansion">Expansión</span><i class="sep"></i>
+          <span class="logo logo--yahoo">Yahoo News</span><i class="sep"></i>
+          <span class="logo logo--forbes">Forbes</span><i class="sep"></i>
+          <span class="logo logo--entrepreneur">Entrepreneur</span><i class="sep"></i>
+          <span class="logo logo--shark">Shark Tank</span><i class="sep"></i>
+          <span class="logo logo--expansion">Expansión</span><i class="sep"></i>
+          <span class="logo logo--yahoo">Yahoo News</span><i class="sep"></i>
+        </div>
+      </div>
+      <p class="sr-only">Forbes, Entrepreneur, Shark Tank, Expansión, Yahoo News</p>
+    </section>
+
+    <!-- ============================================================ CATEGORY -->
+    <section class="category light" id="category">
+      <div class="wrap">
+        <div class="category__grid">
+          <div class="category__text reveal">
+            <p class="tag mono">CATEGORY</p>
+            <h2 class="h2">There's <em>"using AI."</em><br/>And there's being an AI&nbsp;Powered&nbsp;Enterprise.</h2>
+            <p class="body">Most companies bolt AI onto what they already do — a chatbot here, a copilot there. An AI Powered Enterprise is built differently. Every function, every workflow, every decision point is designed to operate alongside specialized intelligence from day one. It's not a feature. It's an operating model — and we built the system that runs it.</p>
+          </div>
+          <figure class="category__diagram reveal" aria-label="One brain, zero friction, a coordinated workforce">
+            <svg viewBox="0 0 1000 420" id="catSvg" preserveAspectRatio="xMidYMid meet" role="img">
+              <!-- ONE BRAIN -->
+              <g class="cat cat--1" transform="translate(120 190)">
+                <rect x="-44" y="-44" width="88" height="88" rx="6" class="cat__box"/>
+                <path d="M-22 -22 h44 v44 h-44z M-22 0 h44 M0 -22 v44" class="cat__inner"/>
+                <text y="82" text-anchor="middle" class="cat__label">ONE BRAIN</text>
+                <text y="100" text-anchor="middle" class="cat__sub mono">KNOWLEDGE INFRASTRUCTURE</text>
+              </g>
+              <g class="cat__arrow" transform="translate(215 190)"><path d="M0 0 H70" marker-end="url(#arrowD)"/></g>
+              <!-- ZERO FRICTION -->
+              <g class="cat cat--2" transform="translate(380 190)">
+                <rect x="-64" y="-28" width="128" height="56" rx="6" class="cat__box"/>
+                <path d="M-44 0 H44" class="cat__flow"/>
+                <circle class="cat__pkt" r="4" cx="-44" cy="0"/>
+                <text y="82" text-anchor="middle" class="cat__label">ZERO FRICTION</text>
+                <text y="100" text-anchor="middle" class="cat__sub mono">CONNECTED WORKFLOWS</text>
+              </g>
+              <g class="cat__arrow" transform="translate(470 190)"><path d="M0 0 H70" marker-end="url(#arrowD)"/></g>
+              <!-- COORDINATED WORKFORCE -->
+              <g class="cat cat--3" transform="translate(760 190)">
+                <circle r="120" class="cat__ring"/>
+                <circle r="26" class="cat__orch"/>
+                <path d="M0 -8 L8 0 0 8 -8 0z" class="cat__core"/>
+                <g class="cat__spokes">
+                  <path d="M0 -26 L0 -96"/><path d="M22 -13 L83 -48"/><path d="M22 13 L83 48"/><path d="M0 26 L0 96"/><path d="M-22 13 L-83 48"/><path d="M-22 -13 L-83 -48"/>
+                </g>
+                <g class="cat__agents">
+                  <g transform="translate(0 -110)"><path d="M0 -12 L12 0 0 12 -12 0z"/><text y="-20" text-anchor="middle" class="mono">FINANCE</text></g>
+                  <g transform="translate(95 -55)"><path d="M0 -12 L12 0 0 12 -12 0z"/><text x="20" y="4" class="mono">SUPPORT</text></g>
+                  <g transform="translate(95 55)"><path d="M0 -12 L12 0 0 12 -12 0z"/><text x="20" y="4" class="mono">CONTENT</text></g>
+                  <g transform="translate(0 110)"><path d="M0 -12 L12 0 0 12 -12 0z"/><text y="30" text-anchor="middle" class="mono">OPERATIONS</text></g>
+                  <g transform="translate(-95 55)"><path d="M0 -12 L12 0 0 12 -12 0z"/><text x="-20" y="4" text-anchor="end" class="mono">SALES</text></g>
+                  <g transform="translate(-95 -55)"><path d="M0 -12 L12 0 0 12 -12 0z"/><text x="-20" y="4" text-anchor="end" class="mono">MARKET INTEL</text></g>
+                </g>
+                <text y="160" text-anchor="middle" class="cat__label cat__label--strong">A COORDINATED WORKFORCE</text>
+                <text y="180" text-anchor="middle" class="cat__sub mono">SPECIALIZED AGENTS · ONE ORCHESTRATION LAYER</text>
+              </g>
+              <defs>
+                <marker id="arrowD" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4 0 8z" fill="currentColor"/></marker>
+              </defs>
+            </svg>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ ARCHITECTURE -->
+    <section class="arch" id="architecture">
+      <div class="wrap arch__head reveal">
+        <p class="tag mono">ARCHITECTURE</p>
+        <h2 class="h2">The Architecture of an AI&nbsp;Powered&nbsp;Enterprise</h2>
+        <p class="sub">Four layers. Fully integrated. Engineered to compound.</p>
+        <ol class="arch__index mono" aria-label="Layers">
+          <li><a href="#layer-01"><b>01</b> KNOWLEDGE</a></li>
+          <li><a href="#layer-02"><b>02</b> VELOCITY</a></li>
+          <li><a href="#layer-03"><b>03</b> EXECUTION</a></li>
+          <li><a href="#layer-04"><b>04</b> COORDINATION</a></li>
+        </ol>
+      </div>
+
+      <!-- LAYER 01 — KNOWLEDGE -->
+      <article class="layer" id="layer-01" data-layer="1">
+        <div class="wrap layer__grid">
+          <div class="layer__text reveal">
+            <p class="tag mono"><i class="tag__bar"></i>LAYER 01 — KNOWLEDGE</p>
+            <h3 class="h3">The knowledge infrastructure your company has never had</h3>
+            <p class="body">Every document, process, historical record, and report your company has ever produced — structured into a living knowledge base your AI can reason with directly. Not storage. Infrastructure.</p>
+            <ul class="caps">
+              <li><b>Pattern and correlation detection</b><span>Surfaces relationships across sales, operations, and finance that manual analysis misses.</span></li>
+              <li><b>Programmatic knowledge layers</b><span>Information structured for AI to query, reason over, and update continuously.</span></li>
+              <li><b>Knowledge graph visualization</b><span>See how everything in your company connects, mapped in real time.</span></li>
+            </ul>
+            <p class="closing">Institutional knowledge, finally built to scale.</p>
+          </div>
+          <figure class="layer__visual" aria-label="Enterprise knowledge graph connecting documents, departments, customers, transactions, processes and agents">
+            <div class="panel">
+              <div class="panel__bar mono"><span>KNOWLEDGE GRAPH</span><span id="kgStat">NODES 000 · EDGES 000</span></div>
+              <svg viewBox="0 0 800 520" id="kgSvg" preserveAspectRatio="xMidYMid meet"></svg>
+              <div class="panel__foot mono" id="kgQuery">AGENT QUERY · <em>standby</em></div>
+            </div>
+          </figure>
+        </div>
+      </article>
+
+      <!-- LAYER 02 — VELOCITY -->
+      <article class="layer" id="layer-02" data-layer="2">
+        <div class="wrap layer__grid layer__grid--flip">
+          <div class="layer__text reveal">
+            <p class="tag mono"><i class="tag__bar"></i>LAYER 02 — VELOCITY</p>
+            <h3 class="h3">Your stack, operating as a single system</h3>
+            <p class="body">We integrate the tools you already run so they execute together — no manual handoffs, no duplicated work, no operational drag.</p>
+            <p class="caps__title mono">IN PRACTICE</p>
+            <ul class="caps">
+              <li><b>Lead to opportunity, automatically</b><span>Inbound leads qualified and routed the moment they arrive.</span></li>
+              <li><b>Financial reporting that builds itself</b><span>Banking, spreadsheets, and accounting systems synchronized into executive-ready reports.</span></li>
+              <li><b>Support that routes itself</b><span>Tickets classified, prioritized, and answered with AI-drafted responses in seconds.</span></li>
+              <li><b>Onboarding, coordinated end to end</b><span>Access, documentation, and training synchronized across HR, IT, and operations.</span></li>
+            </ul>
+            <p class="closing">Disconnected tools were never a strategy. This is.</p>
+          </div>
+          <figure class="layer__visual" aria-label="Disconnected enterprise systems connecting into one orchestration layer">
+            <div class="panel">
+              <div class="panel__bar mono"><span>INTEGRATION MAP</span><span id="intStat">CONNECTED 0 / 8</span></div>
+              <svg viewBox="0 0 800 520" id="intSvg" preserveAspectRatio="xMidYMid meet"></svg>
+              <div class="panel__foot mono" id="intFoot">HANDOFFS · <em>manual</em></div>
+            </div>
+          </figure>
+        </div>
+      </article>
+
+      <!-- LAYER 03 — EXECUTION (centerpiece, pinned) -->
+      <article class="layer layer--exec" id="layer-03" data-layer="3">
+        <div class="exec__sticky">
+          <div class="wrap exec__head">
+            <p class="tag mono"><i class="tag__bar"></i>LAYER 03 — EXECUTION</p>
+            <h3 class="h3">Purpose-built agents. Not general-purpose gimmicks.</h3>
+            <p class="body">Every agent is built to own one function — with the depth and precision a generalist assistant can't match.</p>
+          </div>
+          <div class="wrap exec__stage">
+            <svg class="exec__bus" id="execBus" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true">
+              <path class="bus__line" id="busLine" d="M40 28 H1160"/>
+              <g class="bus__stubs">
+                <path d="M200 0 V28"/><path d="M600 0 V28"/><path d="M1000 0 V28"/>
+                <path d="M200 28 V56"/><path d="M600 28 V56"/><path d="M1000 28 V56"/>
+              </g>
+              <g class="bus__ports"><circle cx="200" cy="28" r="3"/><circle cx="600" cy="28" r="3"/><circle cx="1000" cy="28" r="3"/></g>
+              <g id="busPackets"><rect width="14" height="3" y="26.5"/><rect width="14" height="3" y="26.5"/><rect width="14" height="3" y="26.5"/></g>
+            </svg>
+            <ul class="agents" id="execAgents">
+              <li class="acard" data-i="0">
+                <div class="acard__head"><span class="acard__glyph"></span><span class="acard__id mono">AGT-01</span><span class="acard__state mono">STANDBY</span></div>
+                <h4>FINANCE AGENT</h4>
+                <p>Flags invoice anomalies and irregularities before they become losses.</p>
+                <p class="acard__task mono" data-task="ANOMALY FLAGGED · INV-4471">—</p>
+              </li>
+              <li class="acard" data-i="1">
+                <div class="acard__head"><span class="acard__glyph"></span><span class="acard__id mono">AGT-02</span><span class="acard__state mono">STANDBY</span></div>
+                <h4>SUPPORT AGENT</h4>
+                <p>Resolves recurring cases, escalates what matters, and improves with every interaction.</p>
+                <p class="acard__task mono" data-task="CASE #2093 RESOLVED · 41s">—</p>
+              </li>
+              <li class="acard" data-i="2">
+                <div class="acard__head"><span class="acard__glyph"></span><span class="acard__id mono">AGT-03</span><span class="acard__state mono">STANDBY</span></div>
+                <h4>CONTENT AGENT</h4>
+                <p>Produces reports, proposals, and brand-aligned materials on demand.</p>
+                <p class="acard__task mono" data-task="EXEC REPORT · Q3 · DRAFTED">—</p>
+              </li>
+              <li class="acard" data-i="3">
+                <div class="acard__head"><span class="acard__glyph"></span><span class="acard__id mono">AGT-04</span><span class="acard__state mono">STANDBY</span></div>
+                <h4>MARKET INTELLIGENCE AGENT</h4>
+                <p>Tracks competitors and pricing shifts continuously, in real time.</p>
+                <p class="acard__task mono" data-task="COMPETITOR PRICE Δ −6.2%">—</p>
+              </li>
+              <li class="acard" data-i="4">
+                <div class="acard__head"><span class="acard__glyph"></span><span class="acard__id mono">AGT-05</span><span class="acard__state mono">STANDBY</span></div>
+                <h4>SALES AGENT</h4>
+                <p>Qualifies inbound opportunities and routes them to the right owner instantly.</p>
+                <p class="acard__task mono" data-task="LEAD QUALIFIED · SCORE 87">—</p>
+              </li>
+              <li class="acard" data-i="5">
+                <div class="acard__head"><span class="acard__glyph"></span><span class="acard__id mono">AGT-06</span><span class="acard__state mono">STANDBY</span></div>
+                <h4>OPERATIONS AGENT</h4>
+                <p>Synchronizes fulfillment, access, and internal processes across teams.</p>
+                <p class="acard__task mono" data-task="ONBOARDING · 3 SYSTEMS SYNCED">—</p>
+              </li>
+            </ul>
+          </div>
+          <div class="wrap exec__foot">
+            <p class="exec__phase mono" id="execPhase"><i></i>AWAITING ACTIVATION</p>
+            <p class="closing">Specialized. Precise. Built for scale, not spectacle.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- LAYER 04 — COORDINATION -->
+      <article class="layer layer--coord" id="layer-04" data-layer="4">
+        <div class="coord__bg" aria-hidden="true">
+          <video id="coordVideo" muted playsinline loop preload="none" poster="assets/video/orchestration.jpg">
+            <source src="assets/video/orchestration.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="wrap layer__grid layer__grid--coord">
+          <div class="layer__text reveal">
+            <p class="tag mono"><i class="tag__bar"></i>LAYER 04 — COORDINATION</p>
+            <h3 class="h3">The system that makes it all operate as one</h3>
+            <p class="body">Individual agents solve individual problems. An orchestrated agent network solves entire business processes — simultaneously, without collision. This is the coordination layer that makes an AI Powered Enterprise actually work.</p>
+            <ul class="caps">
+              <li><b>Real-time, multi-agent coordination</b><span>Across sales, support, finance, and operations.</span></li>
+              <li><b>Distributed execution, centralized direction</b><span>Each agent acts. The orchestrator directs.</span></li>
+              <li><b>Modular by design</b><span>New agents integrate without disrupting existing operations.</span></li>
+              <li><b>Human checkpoints where they matter</b><span>Critical decisions remain under human authority.</span></li>
+            </ul>
+            <p class="closing">This is the layer that separates a collection of AI tools from an AI Powered Enterprise.</p>
+          </div>
+          <figure class="layer__visual" aria-label="Orchestrator coordinating multiple simultaneous agent workflows">
+            <div class="panel panel--glass">
+              <div class="panel__bar mono"><span>ORCHESTRATOR</span><span id="orchVerb" class="accent">RECEIVES</span></div>
+              <svg viewBox="0 0 800 560" id="orchSvg" preserveAspectRatio="xMidYMid meet"></svg>
+              <ol class="flows mono" id="orchFlows">
+                <li data-flow="0"><span class="flows__n">WF-01</span><span class="flows__chain">SALES → FINANCE → OPERATIONS → SUPPORT</span><span class="flows__st">QUEUED</span></li>
+                <li data-flow="1"><span class="flows__n">WF-02</span><span class="flows__chain">MARKET INTEL → STRATEGY → CONTENT → EXEC REPORT</span><span class="flows__st">QUEUED</span></li>
+                <li data-flow="2"><span class="flows__n">WF-03</span><span class="flows__chain">SUPPORT → KNOWLEDGE BASE → RESOLUTION → HUMAN ESCALATION</span><span class="flows__st">QUEUED</span></li>
+              </ol>
+            </div>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============================================================ HOW IT WORKS -->
+    <section class="how light" id="how">
+      <div class="how__sticky">
+        <div class="wrap how__head reveal">
+          <p class="tag mono">HOW IT WORKS</p>
+          <h2 class="h2">Becoming an AI&nbsp;Powered&nbsp;Enterprise — in four moves</h2>
+        </div>
+        <div class="how__viewport">
+          <div class="how__track" id="howTrack">
+            <div class="how__rail" aria-hidden="true"><i id="howRailFill"></i></div>
+            <article class="step" data-step="0">
+              <p class="step__n mono">01</p>
+              <h3>DIAGNOSE</h3>
+              <p>We map your operation and identify exactly where intelligence creates the highest leverage — grounded in data, not assumptions.</p>
+              <p class="step__state mono">BUSINESS</p>
+            </article>
+            <article class="step" data-step="1">
+              <p class="step__n mono">02</p>
+              <h3>ARCHITECT</h3>
+              <p>We design your system: Second Brain, automation, agents, and orchestration — engineered around your business, not a template.</p>
+              <p class="step__state mono">INTELLIGENCE</p>
+            </article>
+            <article class="step" data-step="2">
+              <p class="step__n mono">03</p>
+              <h3>DEPLOY</h3>
+              <p>We integrate directly with the tools you already use. No downtime. No disruptive migrations.</p>
+              <p class="step__state mono">AGENTS</p>
+            </article>
+            <article class="step" data-step="3">
+              <p class="step__n mono">04</p>
+              <h3>SCALE</h3>
+              <p>The system compounds as your company grows — intelligence that expands with you, not around you.</p>
+              <p class="step__state mono">ORCHESTRATION</p>
+            </article>
+            <article class="step step--end" data-step="4">
+              <p class="step__n mono">∞</p>
+              <h3>AI POWERED ENTERPRISE</h3>
+              <p>Humans direct. Agents execute. The enterprise compounds.</p>
+              <p class="step__state mono">OPERATING</p>
+            </article>
+          </div>
+        </div>
+        <ol class="how__progress mono" id="howProgress" aria-hidden="true">
+          <li>BUSINESS</li><li>INTELLIGENCE</li><li>AGENTS</li><li>ORCHESTRATION</li><li>AI POWERED ENTERPRISE</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================ PROOF -->
+    <section class="proof" id="proof">
+      <div class="wrap">
+        <div class="proof__head reveal">
+          <p class="tag mono">SUCCESS STORIES</p>
+          <h2 class="h2">Proof, not promises</h2>
+          <p class="sub">Companies already operating as AI Powered Enterprises.</p>
+        </div>
+        <ul class="stories" id="stories">
+          <li class="story reveal" tabindex="0">
+            <div class="story__top">
+              <span class="story__co">[COMPANY NAME]</span>
+              <span class="story__ind mono">[INDUSTRY]</span>
+            </div>
+            <dl class="story__body">
+              <div class="story__row" data-k="before"><dt class="mono">BEFORE</dt><dd>[Operational bottleneck]</dd></div>
+              <div class="story__row" data-k="built"><dt class="mono">BUILT</dt><dd><span class="chip">Second Brain</span><span class="chip">Automation</span><span class="chip">Agents</span><span class="chip">Orchestration</span></dd></div>
+              <div class="story__row story__row--result" data-k="result"><dt class="mono">RESULT</dt><dd class="story__result"><b>[Verified hard number]</b><span class="mono">PLACEHOLDER · PENDING VERIFIED DATA</span></dd></div>
+            </dl>
+            <p class="story__more mono" aria-hidden="true">BEFORE → BUILT → RESULT</p>
+          </li>
+          <li class="story reveal" tabindex="0">
+            <div class="story__top">
+              <span class="story__co">[COMPANY NAME]</span>
+              <span class="story__ind mono">[INDUSTRY]</span>
+            </div>
+            <dl class="story__body">
+              <div class="story__row" data-k="before"><dt class="mono">BEFORE</dt><dd>[Operational bottleneck]</dd></div>
+              <div class="story__row" data-k="built"><dt class="mono">BUILT</dt><dd><span class="chip">Automation</span><span class="chip">Agents</span></dd></div>
+              <div class="story__row story__row--result" data-k="result"><dt class="mono">RESULT</dt><dd class="story__result"><b>[Verified hard number]</b><span class="mono">PLACEHOLDER · PENDING VERIFIED DATA</span></dd></div>
+            </dl>
+            <p class="story__more mono" aria-hidden="true">BEFORE → BUILT → RESULT</p>
+          </li>
+          <li class="story reveal" tabindex="0">
+            <div class="story__top">
+              <span class="story__co">[COMPANY NAME]</span>
+              <span class="story__ind mono">[INDUSTRY]</span>
+            </div>
+            <dl class="story__body">
+              <div class="story__row" data-k="before"><dt class="mono">BEFORE</dt><dd>[Operational bottleneck]</dd></div>
+              <div class="story__row" data-k="built"><dt class="mono">BUILT</dt><dd><span class="chip">Second Brain</span><span class="chip">Orchestration</span></dd></div>
+              <div class="story__row story__row--result" data-k="result"><dt class="mono">RESULT</dt><dd class="story__result"><b>[Verified hard number]</b><span class="mono">PLACEHOLDER · PENDING VERIFIED DATA</span></dd></div>
+            </dl>
+            <p class="story__more mono" aria-hidden="true">BEFORE → BUILT → RESULT</p>
+          </li>
+        </ul>
+        <p class="proof__note mono">Result format examples: 38% reduction in response time · 27 hours saved per week · 42% faster reporting cycle. Only verified numbers are published.</p>
+        <p class="proof__bridge reveal">Engineered by the team behind <b>AI Lab School</b> — featured on Shark Tank and Forbes. Now bringing that same rigor to enterprise AI.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ FINAL CTA -->
+    <section class="final" id="final">
+      <div class="final__bg" aria-hidden="true">
+        <video id="finalVideo" muted playsinline loop preload="none" poster="assets/video/enterprise.jpg">
+          <source src="assets/video/enterprise.mp4" type="video/mp4" />
+        </video>
+        <div class="final__shade"></div>
+      </div>
+      <div class="wrap final__inner">
+        <div class="final__copy reveal">
+          <p class="tag mono tag--light">CONTROL</p>
+          <h2 class="h2 h2--xl">The AI Powered Enterprise isn't coming.<br/><span>It's already here.</span></h2>
+          <p class="body">One diagnostic call. No commitment. Find out exactly where your company stands — and what it takes to operate as an AI Powered Enterprise.</p>
+          <div class="final__actions">
+            <button class="btn btn--primary btn--lg" data-open-modal data-intent="diagnostic"><span>Get Your AI Diagnostic</span></button>
+            <button class="btn btn--ghost btn--lg" data-open-modal data-intent="specialist"><span>Talk to a Specialist</span></button>
+          </div>
+        </div>
+        <aside class="final__hud mono" id="finalHud" aria-label="System status">
+          <div class="fhud__row"><span>AGENTS</span><b>ONLINE</b></div>
+          <div class="fhud__row"><span>WORKFLOWS</span><b>MOVING</b></div>
+          <div class="fhud__row"><span>ENTERPRISE</span><b>OPERATING</b></div>
+          <div class="fhud__row fhud__row--h"><span>HUMANS</span><b>IN CONTROL</b></div>
+          <ul class="fhud__log" id="finalLog" aria-hidden="true"></ul>
+        </aside>
+      </div>
+      <p class="final__tagline mono" aria-hidden="true">HUMANS DIRECT · AGENTS EXECUTE · THE ENTERPRISE COMPOUNDS</p>
+    </section>
+
+    <!-- ============================================================ FOOTER -->
+    <footer class="footer">
+      <div class="wrap footer__grid">
+        <div class="footer__brand">
+          <span class="nav__mark" aria-hidden="true"></span>
+          <span class="nav__word">AI LAB <b>ENTERPRISE</b></span>
+          <p class="mono">THE AI POWERED ENTERPRISE</p>
+        </div>
+        <nav class="footer__links" aria-label="Footer">
+          <a href="#category">Category</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#how">How it works</a>
+          <a href="#proof">Proof</a>
+        </nav>
+        <p class="footer__legal mono">© <span id="year"></span> AI LAB ENTERPRISE. AI LAB SCHOOL · FEATURED ON SHARK TANK, FORBES, ENTREPRENEUR, EXPANSIÓN, YAHOO NEWS.</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ============================================================ MODAL -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close-modal aria-label="Close">×</button>
+      <p class="tag mono" id="modalTag">AI DIAGNOSTIC</p>
+      <h3 class="h3" id="modalTitle">Get Your AI Diagnostic</h3>
+      <p class="body" id="modalBody">One call. No commitment. We map where your operation stands and where intelligence creates the highest leverage.</p>
+      <form class="form" id="diagForm" novalidate>
+        <input type="hidden" name="intent" id="formIntent" value="diagnostic" />
+        <label><span class="mono">NAME</span><input name="name" type="text" autocomplete="name" required /></label>
+        <label><span class="mono">WORK EMAIL</span><input name="email" type="email" autocomplete="email" required /></label>
+        <label><span class="mono">COMPANY</span><input name="company" type="text" autocomplete="organization" required /></label>
+        <label><span class="mono">ROLE</span><input name="role" type="text" autocomplete="organization-title" /></label>
+        <label class="form__full"><span class="mono">WHAT SHOULD OPERATE WITH AI FIRST?</span><textarea name="notes" rows="3" placeholder="Sales, finance, support, operations…"></textarea></label>
+        <p class="form__err mono" id="formErr" hidden>PLEASE COMPLETE NAME, WORK EMAIL AND COMPANY.</p>
+        <button class="btn btn--primary btn--lg form__submit" type="submit"><span>Request Diagnostic</span></button>
+        <p class="mono form__fine">RESPONSE WITHIN ONE BUSINESS DAY · NO COMMITMENT</p>
+      </form>
+      <div class="form__ok" id="formOk" hidden>
+        <p class="mono accent"><i class="dot"></i>REQUEST RECEIVED</p>
+        <h4>Diagnostic queued.</h4>
+        <p>A specialist will reach out within one business day to schedule your session.</p>
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
