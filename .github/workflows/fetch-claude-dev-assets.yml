@@ -42,7 +42,9 @@ jobs:
           for k in network lab cert final; do
             ffmpeg -y -v error -i raw/$k.mp4 -an -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 $A/video/$k.mp4
             ffmpeg -y -v error -i raw/$k.mp4 -an -c:v libvpx-vp9 -crf 33 -b:v 0 -row-mt 1 -vf scale=1920:1080 $A/video/$k.webm
-            ffmpeg -y -v error -ss 1 -i raw/$k.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/video/$k.jpg
+            # Póster: el sello de certificación se forma al final del clip; el resto toma un frame temprano
+            SS=1; [ "$k" = "cert" ] && SS=6.5
+            ffmpeg -y -v error -ss $SS -i raw/$k.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/video/$k.jpg
           done
           echo "frames: $(ls $A/hero/frames | wc -l)"
           du -sh $A/*

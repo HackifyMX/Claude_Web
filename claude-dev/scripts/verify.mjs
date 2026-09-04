@@ -40,7 +40,7 @@ const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification pro
   check('Sin copy de marketing en inglés (muestra)', !englishRe.test(bodyText), (bodyText.match(englishRe) || []).join(','));
   check('Nombres oficiales preservados (Claude Code, MCP, Claude Certified Developer – Foundations)', /Claude Code/.test(bodyText) && /\bMCP\b/.test(bodyText) && /Claude Certified Developer – Foundations/.test(bodyText));
   check('Precio $8,000 MXN y examen incluido visibles', /\$8,000 MXN/.test(bodyText) && /Examen oficial/i.test(bodyText));
-  check('Distinción Anthropic emite / AI LAB prepara', /Anthropic emite la certificación oficial/i.test(bodyText) && /AI LAB (proporciona|te brinda)/i.test(bodyText));
+  check('Distinción Anthropic emite / AI LAB prepara', /Anthropic emite la certificación oficial/i.test(bodyText) && /AI LAB\s*(proporciona|te brinda)/i.test(bodyText));
   check('Testimonios marcados como muestra', (await page.$$eval('.tcard[data-placeholder=true]', (e) => e.length)) >= 3 && /Contenido de muestra/.test(bodyText));
 
   // 1. Hero
@@ -51,10 +51,10 @@ const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification pro
   await page.screenshot({ path: `${SHOTS}/01-hero-top.png` });
   const hero = await pinRange(page, '#hero');
   const samples = [];
-  for (const p of [0.03, 0.1, 0.18, 0.3, 0.45, 0.6, 0.72, 0.85, 0.95, 1]) {
+  for (const p of [0.03, 0.1, 0.18, 0.34, 0.5, 0.65, 0.76, 0.87, 0.95, 1]) {
     await scrollTo(page, hero.top + hero.range * p, 700);
     const s = await S(page); samples.push({ p, frame: s.heroFrame, agents: s.agentsOn, links: s.linksOn, orch: s.orchOn, role: s.orchRole, team: s.heroTeam, final: s.heroFinal, stage: s.heroStage });
-    if ([0.1, 0.3, 0.45, 0.72, 1].includes(p)) await page.screenshot({ path: `${SHOTS}/02-hero-${String(Math.round(p * 100)).padStart(3, '0')}.png` });
+    if ([0.1, 0.34, 0.5, 0.76, 1].includes(p)) await page.screenshot({ path: `${SHOTS}/02-hero-${String(Math.round(p * 100)).padStart(3, '0')}.png` });
   }
   const fr = samples.map((s) => s.frame), ag = samples.map((s) => s.agents);
   check('2. Hero: el frame avanza monótonamente con el scroll', fr.every((v, i) => i === 0 || v >= fr[i - 1]) && fr.at(-1) > fr[0], `frames: ${fr.join(',')}`);
@@ -62,7 +62,7 @@ const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification pro
   check('3. Hero 0–20 %: un solo agente (AGENTE 01)', samples[1].orch && samples[1].agents === 0 && samples[1].role === 'AGENTE 01', `orch=${samples[1].orch} agentes=${samples[1].agents}`);
   check('3b. Hero: título cambia a UN EQUIPO DE AGENTES', !samples[1].team && samples[2].team);
   check('3c. Hero 20–40 %: agentes especializados se activan uno a uno', ag.every((v, i) => i === 0 || v >= ag[i - 1]) && samples[3].agents > 0 && samples[3].agents < 6 && samples[4].agents === 6, `agentes: ${ag.join(',')}`);
-  check('3d. Hero 40–60 %: los agentes se comunican (enlaces)', samples[4].stage === 'LOS AGENTES SE COMUNICAN' && samples[5].links >= 4 && samples[6].links === 7, `enlaces@60%=${samples[5].links} @72%=${samples[6].links}`);
+  check('3d. Hero 40–60 %: los agentes se comunican (enlaces)', samples[4].stage === 'LOS AGENTES SE COMUNICAN' && samples[5].links >= 4 && samples[6].links === 7, `enlaces@65%=${samples[5].links} @76%=${samples[6].links}`);
   check('3e. Hero 60–80 %: orquestador delega', samples[6].role === 'ORQUESTADOR' && samples[6].stage === 'COLABORACIÓN Y DELEGACIÓN', samples[6].stage);
   check('3f. Hero 80–100 %: tarea empresarial completada + estado final', samples[7].stage === 'TAREA EMPRESARIAL COMPLETADA' && samples.at(-1).final);
   await wait(1700);
@@ -197,7 +197,10 @@ const englishRe = /\b(Learn|Build|Get started|Enroll|Apply now|Certification pro
   const { page } = await setup({ width: 1440, height: 900 }, { reducedMotion: 'reduce' });
   await wait(600);
   const s = await S(page);
-  check('Accesibilidad: con prefers-reduced-motion el hero muestra el estado final sin animar', s.heroFinal && s.agentsOn === 6);
+  const hero = await pinRange(page, '#hero');
+  await scrollTo(page, hero.top + hero.range, 600);
+  const s2 = await S(page);
+  check('Accesibilidad: con prefers-reduced-motion no hay partículas ni animación autónoma, y el scrub sigue al scroll', s.particles === 0 && s.videosPlaying.length === 0 && s2.heroFinal && s2.agentsOn === 6, `particulas=${s.particles} final=${s2.heroFinal}`);
   await page.close();
 }
 

@@ -152,6 +152,7 @@
   const pc = $('#heroParticles'); const pctx = pc.getContext('2d');
   let parts = [], mouse = { x: -9999, y: -9999, active: false }, pW = 0, pH = 0;
   function sizeParticles() {
+    if (prefersReduced) { parts = []; state.particles = 0; return; }
     const dpr = clamp(window.devicePixelRatio || 1, 1, 1.5);
     pW = pc.clientWidth; pH = pc.clientHeight; pc.width = Math.round(pW * dpr); pc.height = Math.round(pH * dpr); pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const N = isMobile() ? 40 : 110;
@@ -182,15 +183,15 @@
 
   /* Coreografía de la red */
   const ONE_AT = 0.06, TEAM_AT = 0.14;
-  const AG = [0.20, 0.24, 0.28, 0.32, 0.36, 0.40];                     // INVESTIGACIÓN, RAZONAMIENTO, PROGRAMACIÓN, ANÁLISIS, AUTOMATIZACIÓN, VALIDACIÓN
-  const LK = [0.42, 0.45, 0.48, 0.51, 0.54, 0.57, 0.60];               // enlaces agente ↔ agente
-  const DELEG_AT = 0.62, EXEC_AT = 0.70, DONE_AT = 0.80, FINAL_AT = 0.88;
+  const AG = [0.24, 0.28, 0.32, 0.36, 0.40, 0.44];                     // INVESTIGACIÓN, RAZONAMIENTO, PROGRAMACIÓN, ANÁLISIS, AUTOMATIZACIÓN, VALIDACIÓN
+  const LK = [0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64];               // enlaces agente ↔ agente
+  const DELEG_AT = 0.66, EXEC_AT = 0.74, DONE_AT = 0.83, FINAL_AT = 0.90;
   const STAGES = [[0, '00', 'SISTEMA EN ESPERA'], [ONE_AT, '01', 'UN AGENTE DE IA'], [AG[0], '02', 'AGENTES ESPECIALIZADOS'], [LK[0], '03', 'LOS AGENTES SE COMUNICAN'], [DELEG_AT, '04', 'COLABORACIÓN Y DELEGACIÓN'], [DONE_AT, '05', 'TAREA EMPRESARIAL COMPLETADA']];
   const LOG = [
     [ONE_AT, 'AGENTE 01', 'PROCESANDO'], [AG[0], 'AGENTE DE INVESTIGACIÓN', 'ACTIVO'], [AG[1], 'AGENTE DE RAZONAMIENTO', 'ACTIVO'], [AG[2], 'AGENTE DE PROGRAMACIÓN', 'ACTIVO'],
     [AG[3], 'AGENTE DE ANÁLISIS', 'ACTIVO'], [AG[4], 'AGENTE DE AUTOMATIZACIÓN', 'ACTIVO'], [AG[5], 'AGENTE DE VALIDACIÓN', 'ACTIVO'],
     [LK[0], 'CANAL INVESTIGACIÓN → RAZONAMIENTO', 'ABIERTO'], [LK[3], 'INTERCAMBIO DE DATOS', 'EN CURSO'], [LK[6], 'RED DE AGENTES', 'CONECTADA'],
-    [DELEG_AT, 'ORQUESTADOR', 'DELEGANDO TAREAS'], [EXEC_AT, 'AGENTES', 'EJECUTANDO'], [0.76, 'VALIDACIÓN', 'RESULTADO VERIFICADO'], [DONE_AT, 'SISTEMA', 'SOLUCIÓN ENTREGADA'], [FINAL_AT, 'HUMANO', 'ORQUESTA EL SISTEMA', true],
+    [DELEG_AT, 'ORQUESTADOR', 'DELEGANDO TAREAS'], [EXEC_AT, 'AGENTES', 'EJECUTANDO'], [0.79, 'VALIDACIÓN', 'RESULTADO VERIFICADO'], [DONE_AT, 'SISTEMA', 'SOLUCIÓN ENTREGADA'], [FINAL_AT, 'HUMANO', 'ORQUESTA EL SISTEMA', true],
   ];
   const logEls = LOG.map(([, k, v, human]) => { const li = document.createElement('li'); li.innerHTML = `${k}<b>${v}</b>`; if (human) li.classList.add('is-human'); heroLog.appendChild(li); return li; });
   const linkLen = links.map((l) => l.getTotalLength());
@@ -223,7 +224,7 @@
     // Título: CONSTRUYE CON IA. → NO SOLO UN AGENTE. UN EQUIPO DE AGENTES.
     const team = p >= TEAM_AT; hero.classList.toggle('is-team', team); state.heroTeam = team;
     $('#heroT2').setAttribute('aria-hidden', String(!team)); $('#heroT1').setAttribute('aria-hidden', String(team));
-    const copyT = 1 - smooth(0.30, 0.42, p);
+    const copyT = 1 - smooth(0.20, 0.30, p);
     heroCopy.style.opacity = copyT; heroCopy.style.transform = `translateY(${(1 - copyT) * 40}px)`; heroCopy.style.pointerEvents = copyT > 0.2 ? 'auto' : 'none';
 
     // Etapa
@@ -252,6 +253,7 @@
     });
     state.agentsOn = on;
     stackEls.forEach((li, i) => li.classList.toggle('is-on', p >= STACK[i][1]));
+    stack.style.opacity = smooth(0.2, 0.3, p); // en móvil, la pila aparece cuando el copy se desvanece
 
     // Enlaces entre agentes
     let linksOn = 0;
@@ -279,7 +281,6 @@
   }
 
   scene(hero, heroUpdate);
-  if (prefersReduced) heroUpdate(1);
 
   /* ---------------------------------------------------------
      02 · RED INTERACTIVA DE AGENTES
