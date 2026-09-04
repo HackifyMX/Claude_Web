@@ -1,0 +1,56 @@
+name: Fetch and process Claude Developer landing assets
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "claude-dev/assets/sources.json"
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg webp > /dev/null
+
+      - name: Download sources (from claude-dev/assets/sources.json)
+        run: |
+          set -e
+          mkdir -p raw
+          for k in hero network lab cert final; do
+            curl -sSL -o raw/$k.mp4 "$(jq -r ".clips.$k.url" claude-dev/assets/sources.json)"
+          done
+          ls -la raw
+
+      - name: Process media
+        run: |
+          set -e
+          A=claude-dev/assets
+          mkdir -p $A/hero/frames $A/video
+          rm -f $A/hero/frames/*.webp
+          # CLIP 01 → secuencia de 96 frames a 12 fps para el hero controlado por scroll
+          ffmpeg -y -v error -i raw/hero.mp4 -vf "fps=12,scale=1600:900:flags=lanczos" -frames:v 96 -f image2 -c:v libwebp -quality 78 -compression_level 6 $A/hero/frames/frame_%04d.webp
+          ffmpeg -y -v error -i raw/hero.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/hero/poster.jpg
+          # CLIPS 02–05 → loops de fondo H.264 + WebM (VP9) + pósters
+          for k in network lab cert final; do
+            ffmpeg -y -v error -i raw/$k.mp4 -an -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:1080 $A/video/$k.mp4
+            ffmpeg -y -v error -i raw/$k.mp4 -an -c:v libvpx-vp9 -crf 33 -b:v 0 -row-mt 1 -vf scale=1920:1080 $A/video/$k.webm
+            ffmpeg -y -v error -ss 1 -i raw/$k.mp4 -frames:v 1 -vf scale=1600:900 -q:v 3 $A/video/$k.jpg
+          done
+          echo "frames: $(ls $A/hero/frames | wc -l)"
+          du -sh $A/*
+
+      - name: Commit assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add claude-dev/assets
+          git commit -m "Add processed Claude Developer landing media assets [skip ci]" || echo "nothing to commit"
+          git push origin HEAD:${{ github.ref_name }}

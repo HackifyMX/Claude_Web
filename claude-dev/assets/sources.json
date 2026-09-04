@@ -1,0 +1,10 @@
+{
+  "note": "Renders de origen para el landing del Claude Developer Certification Program (Higgsfield · Seedance 2.0 · std · 1080p · 16:9 · 8 s · sin audio). El workflow .github/workflows/fetch-claude-dev-assets.yml descarga estos orígenes y genera los archivos web en claude-dev/assets/.",
+  "clips": {
+    "hero":    { "title": "CLIP 01 — LA RED DE AGENTES (hero, secuencia de 96 frames a 12 fps controlada por scroll)", "job_id": "54c2e964-2acc-44f8-96bf-06ae9f8b3f8a", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_023427_54c2e964-2acc-44f8-96bf-06ae9f8b3f8a.mp4" },
+    "network": { "title": "CLIP 02 — LOS AGENTES SE COMUNICAN (fondo de la sección Acompañamiento)", "job_id": "871bc4d9-4d25-4fcd-9e5f-7b8c44872c08", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_023427_871bc4d9-4d25-4fcd-9e5f-7b8c44872c08.mp4" },
+    "lab":     { "title": "CLIP 03 — EL LABORATORIO DE INGENIERÍA DE IA (fondo del proyecto final / capstone)", "job_id": "378f5b61-fe9d-461f-aaab-7d61fb1b503f", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_023428_378f5b61-fe9d-461f-aaab-7d61fb1b503f.mp4" },
+    "cert":    { "title": "CLIP 04 — EL SELLO DE CERTIFICACIÓN (tarjeta de certificación)", "job_id": "220850e4-8987-4ad3-b1db-d1323911f8dc", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_023401_220850e4-8987-4ad3-b1db-d1323911f8dc.mp4" },
+    "final":   { "title": "CLIP 05 — EL SISTEMA COMPLETO (fondo del CTA final)", "job_id": "e0582da3-3b1f-478d-9664-7bd36793f9a6", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C9UNPk5zvyLmqLtONu66H3NSXL/hf_20260904_023401_e0582da3-3b1f-478d-9664-7bd36793f9a6.mp4" }
+  }
+}

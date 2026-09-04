@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI LAB — Claude Developer Certification Program</title>
+  <meta name="description" content="Programa profesional de 4 meses para aprender a construir soluciones reales con Claude, crear tu portafolio de AI Developer y prepararte para la certificación oficial Claude Certified Developer – Foundations. Examen oficial incluido." />
+  <meta name="theme-color" content="#08090C" />
+  <meta property="og:title" content="AI LAB — Claude Developer Certification Program" />
+  <meta property="og:description" content="Construye con IA. Certifícate. Posiciónate. 4 meses · Proyectos reales · Examen oficial incluido · $8,000 MXN." />
+  <meta property="og:image" content="assets/hero/poster.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090C'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%237B61FF' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%237B61FF'/%3E%3Ccircle cx='25' cy='9' r='2' fill='%2360D3E6'/%3E%3C/svg%3E" />
+  <link rel="preload" href="assets/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/JetBrainsMono-400.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="assets/hero/poster.jpg" as="image" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#workforce">Saltar al contenido</a>
+  <div class="cursor" id="cursor" aria-hidden="true"><i></i></div>
+
+  <!-- ============================================================ NAV -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="AI LAB — inicio">
+      <span class="nav__mark" aria-hidden="true"></span>
+      <span class="nav__word">AI LAB</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Principal">
+      <a href="#programa">Programa</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#certificacion">Certificación</a>
+      <a href="#launchpad">Talent Launchpad</a>
+      <a href="#testimonios">Testimoniales</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__status mono" aria-hidden="true"><i></i>Examen oficial incluido</span>
+      <button class="btn btn--sm btn--primary" data-open-modal data-intent="entrar">Quiero entrar</button>
+      <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================ 01 · HERO -->
+    <section class="hero" id="hero" data-frames="96" aria-labelledby="heroTitle">
+      <div class="hero__sticky">
+        <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <img class="hero__poster" id="heroPoster" src="assets/hero/poster.jpg" alt="" aria-hidden="true" decoding="async" />
+        <canvas class="hero__particles" id="heroParticles" aria-hidden="true"></canvas>
+        <div class="hero__vignette" aria-hidden="true"></div>
+
+        <!-- Red de agentes (se ensambla con el scroll) -->
+        <svg class="hero__net" id="heroNet" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <radialGradient id="nodeGlow"><stop offset="0" stop-color="#7B61FF" stop-opacity=".55"/><stop offset="1" stop-color="#7B61FF" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="net__links" id="netLinks">
+            <path id="ln0" d="M300 220 C 420 200, 480 210, 600 250"/>
+            <path id="ln1" d="M900 220 C 780 200, 720 210, 600 250"/>
+            <path id="ln2" d="M300 220 C 260 320, 250 400, 270 470"/>
+            <path id="ln3" d="M900 220 C 940 320, 950 400, 930 470"/>
+            <path id="ln4" d="M270 470 C 360 540, 380 560, 450 590"/>
+            <path id="ln5" d="M930 470 C 840 540, 820 560, 750 590"/>
+            <path id="ln6" d="M450 590 C 550 620, 650 620, 750 590"/>
+          </g>
+          <g class="net__spokes" id="netSpokes">
+            <path data-agent="0" d="M600 360 L300 220"/>
+            <path data-agent="1" d="M600 360 L900 220"/>
+            <path data-agent="2" d="M600 360 L270 470"/>
+            <path data-agent="3" d="M600 360 L930 470"/>
+            <path data-agent="4" d="M600 360 L450 590"/>
+            <path data-agent="5" d="M600 360 L750 590"/>
+          </g>
+          <g class="net__packets" id="netPackets">
+            <circle r="3.5" data-path="ln0"/><circle r="3.5" data-path="ln1"/><circle r="3.5" data-path="ln2"/><circle r="3.5" data-path="ln3"/><circle r="3.5" data-path="ln4"/><circle r="3.5" data-path="ln5"/><circle r="3.5" data-path="ln6"/>
+          </g>
+          <g class="net__agents">
+            <g class="agent" data-i="0" transform="translate(300 220)"><circle class="agent__glow" r="40" fill="url(#nodeGlow)"/><circle class="agent__ring" r="17"/><circle class="agent__core" r="5"/><text class="agent__name" y="-30" text-anchor="middle">INVESTIGACIÓN</text><text class="agent__state" y="44" text-anchor="middle">EN ESPERA</text></g>
+            <g class="agent" data-i="1" transform="translate(900 220)"><circle class="agent__glow" r="40" fill="url(#nodeGlow)"/><circle class="agent__ring" r="17"/><circle class="agent__core" r="5"/><text class="agent__name" y="-30" text-anchor="middle">RAZONAMIENTO</text><text class="agent__state" y="44" text-anchor="middle">EN ESPERA</text></g>
+            <g class="agent" data-i="2" transform="translate(270 470)"><circle class="agent__glow" r="40" fill="url(#nodeGlow)"/><circle class="agent__ring" r="17"/><circle class="agent__core" r="5"/><text class="agent__name" y="-30" text-anchor="middle">PROGRAMACIÓN</text><text class="agent__state" y="44" text-anchor="middle">EN ESPERA</text></g>
+            <g class="agent" data-i="3" transform="translate(930 470)"><circle class="agent__glow" r="40" fill="url(#nodeGlow)"/><circle class="agent__ring" r="17"/><circle class="agent__core" r="5"/><text class="agent__name" y="-30" text-anchor="middle">ANÁLISIS</text><text class="agent__state" y="44" text-anchor="middle">EN ESPERA</text></g>
+            <g class="agent" data-i="4" transform="translate(450 590)"><circle class="agent__glow" r="40" fill="url(#nodeGlow)"/><circle class="agent__ring" r="17"/><circle class="agent__core" r="5"/><text class="agent__name" y="-30" text-anchor="middle">AUTOMATIZACIÓN</text><text class="agent__state" y="44" text-anchor="middle">EN ESPERA</text></g>
+            <g class="agent" data-i="5" transform="translate(750 590)"><circle class="agent__glow" r="40" fill="url(#nodeGlow)"/><circle class="agent__ring" r="17"/><circle class="agent__core" r="5"/><text class="agent__name" y="-30" text-anchor="middle">VALIDACIÓN</text><text class="agent__state" y="44" text-anchor="middle">EN ESPERA</text></g>
+          </g>
+          <g class="orch" id="netOrch" transform="translate(600 360)">
+            <circle class="orch__halo" r="70"/>
+            <circle class="orch__ring" r="30"/>
+            <circle class="orch__ring2" r="42"/>
+            <circle class="orch__core" r="8"/>
+            <text class="orch__name" y="-58" text-anchor="middle">AGENTE 01</text>
+            <text class="orch__state" y="72" text-anchor="middle">PROCESANDO</text>
+          </g>
+        </svg>
+
+        <div class="hero__progress" aria-hidden="true"><i id="heroBar"></i></div>
+        <div class="hero__stage mono" aria-live="polite"><span class="hero__stageIdx" id="heroStageIdx">00</span><span class="hero__stageTxt" id="heroStageTxt">SISTEMA EN ESPERA</span></div>
+        <ol class="hero__log mono" id="heroLog" aria-hidden="true"></ol>
+
+        <div class="hero__copy" id="heroCopy">
+          <p class="tag mono"><span class="tag__bar"></span>Claude Developer Certification Program · 4 meses</p>
+          <h1 class="hero__title" id="heroTitle">
+            <span class="hero__t1" id="heroT1">CONSTRUYE<br/>CON IA.</span>
+            <span class="hero__t2" id="heroT2" aria-hidden="true">NO SOLO UN AGENTE.<br/><em>UN EQUIPO DE AGENTES.</em></span>
+          </h1>
+          <p class="hero__sub">En 4 meses desarrolla las habilidades para construir soluciones reales con Claude, crea tu portafolio profesional y prepárate para obtener la certificación oficial de Anthropic.</p>
+          <div class="hero__actions">
+            <button class="btn btn--primary btn--magnetic" data-open-modal data-intent="camino">Comienza tu camino como AI Developer</button>
+            <a class="btn btn--ghost btn--magnetic" id="exploreBtn" href="#workforce">Conoce el programa</a>
+          </div>
+          <div class="hero__meta mono">
+            <span class="badge"><i></i>Examen oficial de certificación incluido</span>
+            <span class="hero__price">$8,000 MXN</span>
+          </div>
+        </div>
+
+        <div class="hero__final" id="heroFinal">
+          <p class="hero__finalTag mono">Tarea empresarial completada</p>
+          <h2 class="hero__finalTitle">UN SISTEMA COMPLETO DE IA.<br/><span>TÚ LO ORQUESTAS.</span></h2>
+          <p class="hero__finalSub">Esto es lo que vas a aprender a construir.</p>
+          <div class="hero__hud mono" id="heroHud">
+            <span><b data-counter="6">0</b> agentes</span><span><b data-counter="7">0</b> conexiones</span><span><b data-counter="1">0</b> orquestador</span><span><b data-counter="100">0</b>% completado</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 02 · LA NUEVA FUERZA DE TRABAJO -->
+    <section class="workforce fade-to-light" id="workforce" aria-labelledby="wfTitle">
+      <div class="wrap">
+        <p class="tag mono reveal"><span class="tag__bar"></span>La nueva fuerza de trabajo</p>
+        <h2 class="h2 h2--xl reveal-words" id="wfTitle">EL FUTURO DEL TRABAJO NO ES UNA SOLA IA.</h2>
+        <h3 class="h2 workforce__reveal reveal" id="wfReveal">ES UNA RED DE AGENTES DE IA <span>TRABAJANDO JUNTOS.</span></h3>
+        <p class="sub reveal">Las organizaciones están evolucionando de utilizar la IA como una herramienta aislada a construir sistemas donde agentes especializados pueden investigar, razonar, programar, automatizar y validar tareas de manera coordinada.</p>
+      </div>
+
+      <div class="wrap network" id="network">
+        <div class="network__stage reveal">
+          <svg class="network__svg" id="netSvg" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Red interactiva de agentes de IA"></svg>
+          <p class="network__hint mono" aria-hidden="true">Pasa el cursor sobre cada agente</p>
+        </div>
+        <aside class="network__panel reveal" id="netPanel" aria-live="polite">
+          <p class="network__panelTag mono" id="netPanelTag">Agente orquestador</p>
+          <h3 class="network__panelTitle" id="netPanelTitle">AGENTE ORQUESTADOR</h3>
+          <p class="network__panelBody" id="netPanelBody">Coordina el trabajo de todos los agentes para alcanzar un objetivo común.</p>
+          <ul class="network__panelMeta mono" id="netPanelMeta"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================ 03 · TRANSFORMACIÓN PROFESIONAL -->
+    <section class="light transform" id="transformacion" aria-labelledby="trTitle">
+      <div class="transform__sticky">
+        <div class="wrap transform__grid">
+          <div class="transform__left">
+            <p class="tag mono"><span class="tag__bar"></span>Transformación profesional</p>
+            <h2 class="h2 h2--xl" id="trTitle">DE USUARIO DE IA<br/><span>A CONSTRUCTOR DE IA.</span></h2>
+            <div class="transform__rail" aria-hidden="true"><i id="trRail"></i></div>
+            <p class="transform__count mono" aria-hidden="true"><b id="trIdx">01</b> / 06</p>
+          </div>
+          <ol class="transform__stages" id="trStages">
+            <li class="stage" data-stage="0"><span class="stage__num mono">01</span><div><h3 class="stage__title">APRENDE</h3><p>Domina los fundamentos para desarrollar soluciones con Claude.</p></div></li>
+            <li class="stage" data-stage="1"><span class="stage__num mono">02</span><div><h3 class="stage__title">CONSTRUYE</h3><p>Desarrolla aplicaciones, automatizaciones y agentes de IA.</p></div></li>
+            <li class="stage" data-stage="2"><span class="stage__num mono">03</span><div><h3 class="stage__title">CERTIFÍCATE</h3><p>Prepárate para la certificación oficial Claude Certified Developer – Foundations.</p></div></li>
+            <li class="stage" data-stage="3"><span class="stage__num mono">04</span><div><h3 class="stage__title">CREA TU PORTAFOLIO</h3><p>Demuestra con proyectos reales lo que eres capaz de construir.</p></div></li>
+            <li class="stage" data-stage="4"><span class="stage__num mono">05</span><div><h3 class="stage__title">POSICIÓNATE</h3><p>Prepara tu perfil profesional para el mercado de talento en IA.</p></div></li>
+            <li class="stage" data-stage="5"><span class="stage__num mono">06</span><div><h3 class="stage__title">CONÉCTATE</h3><p>Forma parte de la comunidad y red profesional de AI LAB.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 04 · EXPERIENCIA DE 4 MESES -->
+    <section class="light program" id="programa" aria-labelledby="prTitle">
+      <div class="program__sticky">
+        <div class="wrap program__head">
+          <div>
+            <p class="tag mono reveal"><span class="tag__bar"></span>Experiencia de 4 meses</p>
+            <h2 class="h2 reveal-words" id="prTitle">UNA MISIÓN DE CUATRO MESES. NO UN TEMARIO.</h2>
+          </div>
+          <p class="program__hint mono" aria-hidden="true"><span id="prIdx">MES 01</span> · <span id="prPct">0</span>% de la misión</p>
+        </div>
+        <div class="program__viewport">
+          <div class="program__line" aria-hidden="true"><i id="prLine"></i></div>
+          <ol class="program__track" id="prTrack">
+            <li class="month" data-month="0">
+              <p class="month__idx mono">MES 01</p>
+              <h3 class="month__title">FUNDAMENTOS DEL DESARROLLO CON IA</h3>
+              <ul class="month__list"><li>Claude</li><li>Claude API</li><li>Arquitectura de aplicaciones de IA</li><li>Contexto</li><li>Prompt engineering para desarrolladores</li><li>Salidas estructuradas</li></ul>
+              <p class="month__foot mono">Fase 01 · Base técnica</p>
+            </li>
+            <li class="month" data-month="1">
+              <p class="month__idx mono">MES 02</p>
+              <h3 class="month__title">CONSTRUYENDO CON CLAUDE</h3>
+              <ul class="month__list"><li>Claude API</li><li>Claude Code</li><li>Uso de herramientas</li><li>Integraciones</li><li>MCP</li><li>Desarrollo de soluciones reales</li></ul>
+              <p class="month__foot mono">Fase 02 · Construcción</p>
+            </li>
+            <li class="month" data-month="2">
+              <p class="month__idx mono">MES 03</p>
+              <h3 class="month__title">INTELIGENCIA AGÉNTICA</h3>
+              <ul class="month__list"><li>Agentes de IA</li><li>Arquitecturas multiagente</li><li>Orquestación</li><li>Tool calling</li><li>Sistemas de conocimiento</li><li>Automatización empresarial</li><li>Colaboración entre agentes</li></ul>
+              <p class="month__foot mono">Fase 03 · Sistemas de agentes</p>
+            </li>
+            <li class="month month--final" data-month="3">
+              <p class="month__idx mono">MES 04</p>
+              <h3 class="month__title">PROYECTO + CERTIFICACIÓN</h3>
+              <ul class="month__list"><li>Proyecto final</li><li>Portafolio profesional</li><li>Preparación para el examen</li><li>Simulaciones</li><li>Guía de examen</li><li>Estrategia de certificación</li><li>Presentación del proyecto</li><li class="is-key">Examen oficial incluido</li></ul>
+              <p class="month__foot mono">Fase 04 · Certificación</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 05 · PROYECTOS REALES -->
+    <section class="projects" id="proyectos" aria-labelledby="pjTitle">
+      <div class="wrap projects__head">
+        <div>
+          <p class="tag mono reveal"><span class="tag__bar"></span>Proyectos reales de IA</p>
+          <h2 class="h2 h2--xl reveal-words" id="pjTitle">NO SOLO APRENDES. CONSTRUYES.</h2>
+        </div>
+        <div class="projects__nav" aria-hidden="true">
+          <button class="iconbtn" id="pjPrev" aria-label="Proyecto anterior">←</button>
+          <button class="iconbtn" id="pjNext" aria-label="Proyecto siguiente">→</button>
+        </div>
+      </div>
+      <div class="gallery" id="gallery" tabindex="0" aria-label="Galería de proyectos (desplázate horizontalmente)">
+        <article class="pcard reveal"><p class="pcard__idx mono">PROYECTO 01</p><div class="pcard__art" aria-hidden="true"><i></i><i></i><i></i></div><h3 class="pcard__title">AGENTE DE CONOCIMIENTO</h3><p>Construye un sistema capaz de consultar, comprender y utilizar información empresarial.</p><ul class="chips mono"><li>Claude API</li><li>Contexto</li><li>Sistemas de conocimiento</li></ul></article>
+        <article class="pcard reveal"><p class="pcard__idx mono">PROYECTO 02</p><div class="pcard__art pcard__art--2" aria-hidden="true"><i></i><i></i><i></i></div><h3 class="pcard__title">AGENTE DE ATENCIÓN AL CLIENTE</h3><p>Desarrolla un agente capaz de comprender solicitudes, responder preguntas y ejecutar acciones.</p><ul class="chips mono"><li>Tool calling</li><li>Claude API</li><li>Acciones</li></ul></article>
+        <article class="pcard reveal"><p class="pcard__idx mono">PROYECTO 03</p><div class="pcard__art pcard__art--3" aria-hidden="true"><i></i><i></i><i></i></div><h3 class="pcard__title">AGENTE DE INVESTIGACIÓN</h3><p>Construye un agente capaz de investigar información, analizarla y generar resultados estructurados.</p><ul class="chips mono"><li>Salidas estructuradas</li><li>Herramientas</li><li>Análisis</li></ul></article>
+        <article class="pcard reveal"><p class="pcard__idx mono">PROYECTO 04</p><div class="pcard__art pcard__art--4" aria-hidden="true"><i></i><i></i><i></i></div><h3 class="pcard__title">SISTEMA DE AUTOMATIZACIÓN CON IA</h3><p>Conecta Claude con herramientas empresariales para automatizar procesos y tareas repetitivas.</p><ul class="chips mono"><li>MCP</li><li>Integraciones</li><li>Claude Code</li></ul></article>
+        <article class="pcard reveal"><p class="pcard__idx mono">PROYECTO 05</p><div class="pcard__art pcard__art--5" aria-hidden="true"><i></i><i></i><i></i></div><h3 class="pcard__title">SISTEMA MULTIAGENTE</h3><p>Construye una red donde múltiples agentes especializados colaboran para resolver un problema empresarial complejo.</p><ul class="chips mono"><li>Orquestación</li><li>Agentes de IA</li><li>Colaboración</li></ul></article>
+      </div>
+      <div class="gallery__bar" aria-hidden="true"><i id="galleryBar"></i></div>
+
+      <div class="wrap">
+        <article class="capstone reveal" id="capstone">
+          <video class="capstone__video" id="capVideo" muted playsinline loop preload="none" poster="assets/video/lab.jpg" aria-hidden="true">
+            <source data-src="assets/video/lab.webm" type="video/webm" />
+            <source data-src="assets/video/lab.mp4" type="video/mp4" />
+          </video>
+          <div class="capstone__body">
+            <p class="tag mono"><span class="tag__bar"></span>Proyecto final · Capstone</p>
+            <h3 class="h2">CONSTRUYE TU PROPIA<br/><span>FUERZA DE TRABAJO DE IA</span></h3>
+            <p class="sub">Integra múltiples agentes, herramientas y procesos en una solución de IA diseñada para resolver un problema real.</p>
+            <div class="capstone__actions">
+              <a class="btn btn--primary btn--magnetic" href="#programa">Descubre lo que vas a construir</a>
+              <span class="mono capstone__note">Presentación en Demo Day · Pieza central de tu portafolio</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================ 06 · CERTIFICACIÓN OFICIAL -->
+    <section class="cert" id="certificacion" aria-labelledby="ceTitle">
+      <div class="wrap cert__grid">
+        <div class="cert__copy">
+          <p class="tag mono reveal"><span class="tag__bar"></span>Certificación oficial</p>
+          <h2 class="h2 h2--xl reveal-words" id="ceTitle">TUS HABILIDADES. VALIDADAS.</h2>
+          <p class="sub reveal">Prepárate para la certificación oficial <b>Claude Certified Developer – Foundations</b>.</p>
+          <p class="cert__included reveal"><span class="badge badge--lg"><i></i>EL EXAMEN OFICIAL ESTÁ INCLUIDO.</span></p>
+          <dl class="cert__who reveal">
+            <div><dt class="mono">Anthropic</dt><dd>Emite la certificación oficial.</dd></div>
+            <div><dt class="mono">AI LAB</dt><dd>Proporciona formación, preparación, mentoría y acompañamiento.</dd></div>
+          </dl>
+        </div>
+        <div class="cert__cardWrap reveal" id="certWrap">
+          <article class="ccard" id="certCard">
+            <div class="ccard__shine" aria-hidden="true"></div>
+            <div class="ccard__media" aria-hidden="true">
+              <video class="ccard__video" id="certVideo" muted playsinline loop preload="none" poster="assets/video/cert.jpg">
+                <source data-src="assets/video/cert.webm" type="video/webm" />
+                <source data-src="assets/video/cert.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <header class="ccard__head">
+              <p class="mono ccard__eyebrow">Certificación oficial · Anthropic</p>
+              <h3 class="ccard__title">CLAUDE CERTIFIED DEVELOPER<br/><span>FOUNDATIONS</span></h3>
+            </header>
+            <ul class="ccard__list" id="certList">
+              <li>Preparación para el examen</li>
+              <li>Guía de estudio</li>
+              <li>Evaluaciones de práctica</li>
+              <li>Simulaciones</li>
+              <li>Estrategia para el examen</li>
+              <li>Acompañamiento de instructores</li>
+              <li class="is-key">Examen oficial incluido</li>
+            </ul>
+            <footer class="ccard__foot mono"><span>Programa de preparación · AI LAB</span><span>Certificación emitida por Anthropic</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 07 · ACOMPAÑAMIENTO -->
+    <section class="support" id="soporte" aria-labelledby="suTitle">
+      <video class="support__video" id="supportVideo" muted playsinline loop preload="none" poster="assets/video/network.jpg" aria-hidden="true">
+        <source data-src="assets/video/network.webm" type="video/webm" />
+        <source data-src="assets/video/network.mp4" type="video/mp4" />
+      </video>
+      <div class="support__shade" aria-hidden="true"></div>
+      <div class="wrap support__grid">
+        <div class="support__copy">
+          <p class="tag mono reveal"><span class="tag__bar"></span>Acompañamiento AI LAB</p>
+          <h2 class="h2 h2--xl reveal-words" id="suTitle">NO DESAPARECEMOS CUANDO TERMINAN LAS CLASES.</h2>
+          <h3 class="h2 support__then reveal">TE ACOMPAÑAMOS <span>HASTA QUE APRUEBES.</span></h3>
+          <p class="sub reveal">Después de completar el programa, AI LAB continúa brindándote acompañamiento para ayudarte a aprobar tu certificación, de acuerdo con las condiciones de participación del programa.</p>
+        </div>
+        <div class="support__net reveal" id="supportNet">
+          <svg viewBox="0 0 600 600" id="supSvg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Red de acompañamiento: instructor, mentoría, comunidad, preparación y práctica conectados a la certificación"></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 08 · PERFIL AI DEVELOPER -->
+    <section class="light profile" id="perfil" aria-labelledby="pfTitle">
+      <div class="wrap profile__grid">
+        <div class="profile__copy">
+          <p class="tag mono reveal"><span class="tag__bar"></span>Perfil AI Developer</p>
+          <h2 class="h2 reveal-words" id="pfTitle">NO SOLO OBTENGAS UNA CERTIFICACIÓN. DEMUESTRA LO QUE PUEDES CONSTRUIR.</h2>
+          <p class="sub reveal">Tu identidad profesional se ensambla a partir de componentes verificables: proyectos, código, certificación y presencia profesional.</p>
+        </div>
+        <div class="profile__ui reveal" id="profileUi">
+          <div class="pui">
+            <header class="pui__head pui__part">
+              <span class="pui__avatar" aria-hidden="true"><i></i></span>
+              <div><p class="mono pui__label">Perfil</p><h3 class="pui__title">AI DEVELOPER</h3></div>
+              <span class="pui__status mono"><i></i>Perfil verificado</span>
+            </header>
+            <div class="pui__section pui__part">
+              <p class="mono pui__label">Habilidades</p>
+              <ul class="pui__skills"><li>Claude</li><li>Claude API</li><li>Claude Code</li><li>MCP</li><li>Agentes de IA</li><li>Automatización</li><li>Sistemas multiagente</li></ul>
+            </div>
+            <ul class="pui__components">
+              <li class="pui__part"><span class="pui__icon" aria-hidden="true">◇</span><div><b>GitHub</b><small>Repositorios organizados y documentados</small></div><span class="pui__check mono">✓</span></li>
+              <li class="pui__part"><span class="pui__icon" aria-hidden="true">▣</span><div><b>Proyectos</b><small>5+ soluciones construidas con Claude</small></div><span class="pui__check mono">✓</span></li>
+              <li class="pui__part"><span class="pui__icon" aria-hidden="true">▤</span><div><b>Portafolio</b><small>Evidencia visual de lo que construyes</small></div><span class="pui__check mono">✓</span></li>
+              <li class="pui__part"><span class="pui__icon" aria-hidden="true">◈</span><div><b>Certificación</b><small>Claude Certified Developer – Foundations</small></div><span class="pui__check mono">✓</span></li>
+              <li class="pui__part"><span class="pui__icon" aria-hidden="true">◎</span><div><b>LinkedIn</b><small>Presencia profesional enfocada en IA</small></div><span class="pui__check mono">✓</span></li>
+              <li class="pui__part"><span class="pui__icon" aria-hidden="true">⬡</span><div><b>Perfil AI LAB</b><small>Miembro de la comunidad profesional</small></div><span class="pui__check mono">✓</span></li>
+            </ul>
+            <footer class="pui__foot mono pui__part"><span id="puiCount">0</span> / 6 componentes verificados</footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 09 · TALENT LAUNCHPAD -->
+    <section class="light launchpad" id="launchpad" aria-labelledby="lpTitle">
+      <div class="wrap">
+        <p class="tag mono reveal"><span class="tag__bar"></span>AI Talent Launchpad</p>
+        <h2 class="h2 h2--xl reveal-words" id="lpTitle">APRENDE. CONSTRUYE. HAZTE VISIBLE.</h2>
+        <p class="sub reveal">AI LAB no termina con la capacitación técnica. Te ayudamos a transformar tus nuevas habilidades en una presencia profesional preparada para el mercado de Inteligencia Artificial.</p>
+        <div class="launchpad__visual reveal" aria-hidden="true">
+          <svg viewBox="0 0 1000 300" id="lpSvg" preserveAspectRatio="xMidYMid meet"></svg>
+          <p class="mono launchpad__caption">Perfiles de AI Developer conectando con entornos empresariales · Sin promesas de colocación laboral</p>
+        </div>
+        <ul class="features features--9">
+          <li class="fcard reveal"><span class="fcard__num mono">01</span><h3>OPTIMIZACIÓN DE LINKEDIN</h3><p>Construye una presencia profesional enfocada en IA.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">02</span><h3>CV PROFESIONAL</h3><p>Transforma tu experiencia en un perfil orientado al mercado de IA.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">03</span><h3>GITHUB</h3><p>Organiza y presenta tus proyectos técnicos.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">04</span><h3>PORTAFOLIO</h3><p>Demuestra visualmente lo que puedes construir.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">05</span><h3>MARCA PERSONAL</h3><p>Construye una identidad profesional alrededor de tus nuevas capacidades.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">06</span><h3>ENTREVISTAS TÉCNICAS</h3><p>Prepárate para conversaciones y evaluaciones técnicas.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">07</span><h3>DEMO DAY</h3><p>Presenta tus proyectos frente a una audiencia profesional.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">08</span><h3>AI TALENT NETWORK</h3><p>Forma parte de una red de talento especializado en IA.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">09</span><h3>NETWORKING</h3><p>Conecta con profesionales y oportunidades dentro del ecosistema de IA.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ 10 · TESTIMONIALES -->
+    <section class="light testimonials" id="testimonios" aria-labelledby="teTitle">
+      <div class="wrap">
+        <p class="tag mono reveal"><span class="tag__bar"></span>Testimoniales</p>
+        <h2 class="h2 h2--xl reveal-words" id="teTitle">PERSONAS QUE ESTÁN CONSTRUYENDO EL FUTURO.</h2>
+        <p class="placeholder-note mono reveal" role="note">Contenido de muestra · Estas tarjetas son ejemplos ilustrativos y se reemplazarán con testimonios reales de participantes autorizados.</p>
+        <ul class="tgrid" id="testimonials">
+          <!-- Cada tarjeta es un placeholder. Sustituir: data-photo (URL de la foto), nombre, rol, empresa, testimonio y resultado. -->
+          <li class="tcard reveal" data-placeholder="true" data-photo="">
+            <span class="tcard__flag mono">Muestra · sustituir</span>
+            <blockquote class="tcard__quote">“Llegué usando IA para tareas puntuales. Salí con un agente de conocimiento funcionando sobre la documentación de mi área y un portafolio que puedo mostrar.”</blockquote>
+            <footer class="tcard__foot"><span class="tcard__avatar" aria-hidden="true">P1</span><div><b class="tcard__name">Nombre del participante</b><small class="tcard__role">Rol profesional · Empresa</small></div></footer>
+            <p class="tcard__result mono"><span>Resultado</span>Proyecto de agente de conocimiento en portafolio</p>
+          </li>
+          <li class="tcard reveal" data-placeholder="true" data-photo="">
+            <span class="tcard__flag mono">Muestra · sustituir</span>
+            <blockquote class="tcard__quote">“Lo que más valoro es que no fue teoría: cada semana construimos algo con Claude API y Claude Code que después pude explicar en una entrevista técnica.”</blockquote>
+            <footer class="tcard__foot"><span class="tcard__avatar" aria-hidden="true">P2</span><div><b class="tcard__name">Nombre del participante</b><small class="tcard__role">Rol profesional · Empresa</small></div></footer>
+            <p class="tcard__result mono"><span>Resultado</span>Sistema de automatización con MCP presentado en Demo Day</p>
+          </li>
+          <li class="tcard reveal" data-placeholder="true" data-photo="">
+            <span class="tcard__flag mono">Muestra · sustituir</span>
+            <blockquote class="tcard__quote">“Las simulaciones y la guía de examen me dieron una ruta clara. Saber que el examen oficial ya estaba incluido me quitó la excusa para no presentarlo.”</blockquote>
+            <footer class="tcard__foot"><span class="tcard__avatar" aria-hidden="true">P3</span><div><b class="tcard__name">Nombre del participante</b><small class="tcard__role">Rol profesional · Empresa</small></div></footer>
+            <p class="tcard__result mono"><span>Resultado</span>Preparación completa para Claude Certified Developer – Foundations</p>
+          </li>
+          <li class="tcard reveal" data-placeholder="true" data-photo="">
+            <span class="tcard__flag mono">Muestra · sustituir</span>
+            <blockquote class="tcard__quote">“El Talent Launchpad reorganizó mi LinkedIn y mi GitHub alrededor de lo que ahora sé construir. Mi perfil dejó de ser genérico.”</blockquote>
+            <footer class="tcard__foot"><span class="tcard__avatar" aria-hidden="true">P4</span><div><b class="tcard__name">Nombre del participante</b><small class="tcard__role">Rol profesional · Empresa</small></div></footer>
+            <p class="tcard__result mono"><span>Resultado</span>Perfil profesional posicionado como talento de IA</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ 11 · MÉTRICAS DEL PROGRAMA -->
+    <section class="metrics" id="metricas" aria-label="Métricas del programa">
+      <div class="wrap">
+        <ul class="metrics__grid" id="metricsGrid">
+          <li class="metric reveal"><b><span data-counter="4">0</span> MESES</b><small>Programa profesional</small></li>
+          <li class="metric reveal"><b><span data-counter="5">0</span>+ PROYECTOS</b><small>Construidos durante el programa</small></li>
+          <li class="metric reveal"><b><span data-counter="1">0</span> PORTAFOLIO</b><small>Profesional</small></li>
+          <li class="metric reveal"><b><span data-counter="1">0</span> EXAMEN OFICIAL</b><small>Incluido</small></li>
+          <li class="metric metric--wide reveal"><b>SOPORTE HASTA APROBAR</b><small>Acompañamiento AI LAB</small></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ 12 · TODO INCLUIDO -->
+    <section class="light included" id="incluye" aria-labelledby="inTitle">
+      <div class="wrap">
+        <p class="tag mono reveal"><span class="tag__bar"></span>Todo incluido</p>
+        <h2 class="h2 h2--xl reveal-words" id="inTitle">TODO LO QUE NECESITAS PARA DAR EL SIGUIENTE PASO.</h2>
+        <ul class="features features--11" id="includedGrid">
+          <li class="fcard reveal"><span class="fcard__num mono">01</span><h3>FORMACIÓN EN VIVO</h3><p>Capacitación semanal durante 4 meses.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">02</span><h3>PROYECTOS REALES</h3><p>Construye soluciones prácticas de IA.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">03</span><h3>PREPARACIÓN PARA CERTIFICACIÓN</h3><p>Una ruta estructurada para prepararte para el examen.</p></li>
+          <li class="fcard fcard--key reveal"><span class="fcard__num mono">04</span><h3>EXAMEN OFICIAL INCLUIDO</h3><p>El examen forma parte de la inversión de $8,000 MXN.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">05</span><h3>MENTORÍA</h3><p>Acompañamiento de instructores.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">06</span><h3>PORTAFOLIO PROFESIONAL</h3><p>Construye evidencia de tus capacidades.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">07</span><h3>TALENT LAUNCHPAD</h3><p>Posicionamiento profesional para el mercado de IA.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">08</span><h3>COMUNIDAD AI LAB</h3><p>Forma parte de una comunidad profesional.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">09</span><h3>NETWORKING</h3><p>Conecta con profesionales del ecosistema de IA.</p></li>
+          <li class="fcard reveal"><span class="fcard__num mono">10</span><h3>SOPORTE POST-PROGRAMA</h3><p>Continúa recibiendo acompañamiento después de los 4 meses.</p></li>
+          <li class="fcard fcard--key reveal"><span class="fcard__num mono">11</span><h3>SOPORTE HASTA APROBAR</h3><p>AI LAB continúa acompañándote hasta que logres aprobar tu certificación, bajo las condiciones del programa.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ 13 · INVERSIÓN -->
+    <section class="pricing" id="inversion" aria-labelledby="pxTitle">
+      <div class="wrap pricing__grid">
+        <div class="pricing__copy">
+          <p class="tag mono reveal"><span class="tag__bar"></span>Inversión</p>
+          <h2 class="sr-only" id="pxTitle">Inversión del programa</h2>
+          <p class="pricing__amount reveal"><span class="pricing__cur">$</span>8,000<span class="pricing__mxn">MXN</span></p>
+          <p class="pricing__label mono reveal">Inversión total del programa</p>
+          <p class="pricing__highlight reveal"><span class="badge badge--lg"><i></i>EXAMEN OFICIAL INCLUIDO</span></p>
+          <div class="pricing__actions reveal">
+            <button class="btn btn--primary btn--lg btn--magnetic" data-open-modal data-intent="developer">QUIERO CONVERTIRME EN AI DEVELOPER</button>
+            <p class="pricing__micro mono">Solicita tu lugar en la próxima generación.</p>
+          </div>
+        </div>
+        <ul class="pricing__list reveal" id="pricingList">
+          <li>4 meses de formación</li><li>Capacitación semanal</li><li>Mentoría de instructores</li><li>Proyectos de IA</li><li>Preparación para certificación</li><li>Guía de examen</li><li>Simulaciones</li><li class="is-key">Examen oficial</li><li>Portafolio profesional</li><li>Talent Launchpad</li><li>Comunidad AI LAB</li><li>Networking</li><li>Soporte post-programa</li><li class="is-key">Acompañamiento hasta aprobar</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ 14 · PREGUNTAS FRECUENTES -->
+    <section class="light faq" id="faq" aria-labelledby="faqTitle">
+      <div class="wrap faq__grid">
+        <div class="faq__head">
+          <p class="tag mono reveal"><span class="tag__bar"></span>Preguntas frecuentes</p>
+          <h2 class="h2 reveal-words" id="faqTitle">LO QUE NECESITAS SABER ANTES DE DECIDIR.</h2>
+          <p class="sub reveal">¿Tienes otra pregunta? Solicita tu lugar y un asesor de AI LAB te responderá.</p>
+          <button class="btn btn--ghost-dark btn--magnetic reveal" data-open-modal data-intent="entrar">Quiero entrar</button>
+        </div>
+        <div class="accordion" id="accordion">
+          <details class="acc"><summary><span>¿Para quién está diseñado el programa?</span><i></i></summary><div class="acc__body"><p>Para profesionales con ambición de construir soluciones con Inteligencia Artificial: analistas, ingenieros, consultores, líderes de producto, emprendedores y perfiles técnicos o semitécnicos que quieren pasar de usar IA a desarrollar con ella.</p></div></details>
+          <details class="acc"><summary><span>¿Necesito saber programar?</span><i></i></summary><div class="acc__body"><p>Ayuda tener bases de lógica o programación, pero el programa arranca desde los fundamentos del desarrollo con IA. Trabajarás con Claude API, Claude Code y MCP con acompañamiento semanal de instructores, por lo que la curva de aprendizaje está diseñada para perfiles que están construyendo su base técnica.</p></div></details>
+          <details class="acc"><summary><span>¿Qué certificación obtengo?</span><i></i></summary><div class="acc__body"><p>El programa te prepara para presentar el examen oficial Claude Certified Developer – Foundations. Al aprobarlo, obtienes la certificación oficial emitida por Anthropic.</p></div></details>
+          <details class="acc"><summary><span>¿El examen oficial está incluido?</span><i></i></summary><div class="acc__body"><p>Sí. El costo del examen oficial de certificación forma parte de la inversión de $8,000 MXN. No hay pagos adicionales por presentarlo.</p></div></details>
+          <details class="acc"><summary><span>¿Quién emite la certificación?</span><i></i></summary><div class="acc__body"><p>Anthropic. AI LAB no emite la certificación: AI LAB te forma, te prepara, te acompaña y gestiona tu acceso al examen oficial.</p></div></details>
+          <details class="acc"><summary><span>¿Qué sucede si no apruebo el examen?</span><i></i></summary><div class="acc__body"><p>AI LAB continúa acompañándote con preparación, práctica y mentoría hasta que logres aprobar, de acuerdo con las condiciones de participación del programa que se te comparten antes de inscribirte.</p></div></details>
+          <details class="acc"><summary><span>¿Qué pasa después de los 4 meses?</span><i></i></summary><div class="acc__body"><p>Sigues siendo parte de la comunidad AI LAB, mantienes el soporte post-programa, participas en networking y recibes acompañamiento para tu certificación y tu posicionamiento profesional.</p></div></details>
+          <details class="acc"><summary><span>¿Qué proyectos voy a construir?</span><i></i></summary><div class="acc__body"><p>Un agente de conocimiento, un agente de atención al cliente, un agente de investigación, un sistema de automatización con IA y un sistema multiagente, además de tu proyecto final: tu propia fuerza de trabajo de IA.</p></div></details>
+          <details class="acc"><summary><span>¿Voy a terminar con un portafolio?</span><i></i></summary><div class="acc__body"><p>Sí. Cada proyecto se documenta y se publica en tu GitHub, y el proyecto final se presenta en Demo Day. Terminas con un portafolio profesional de AI Developer que demuestra lo que eres capaz de construir.</p></div></details>
+          <details class="acc"><summary><span>¿Qué incluye el Talent Launchpad?</span><i></i></summary><div class="acc__body"><p>Optimización de LinkedIn, CV profesional orientado a IA, organización de tu GitHub, portafolio, marca personal, preparación para entrevistas técnicas, Demo Day, acceso al AI Talent Network y networking dentro del ecosistema de IA.</p></div></details>
+          <details class="acc"><summary><span>¿Las clases son en vivo?</span><i></i></summary><div class="acc__body"><p>Sí. La formación es en vivo, con sesiones semanales durante 4 meses y mentoría de instructores cada semana.</p></div></details>
+          <details class="acc"><summary><span>¿Tengo soporte de instructores?</span><i></i></summary><div class="acc__body"><p>Sí. Cuentas con mentoría semanal de instructores durante el programa y con soporte de AI LAB después de finalizarlo.</p></div></details>
+          <details class="acc"><summary><span>¿Qué significa “soporte hasta aprobar”?</span><i></i></summary><div class="acc__body"><p>Significa que el acompañamiento de AI LAB no termina con las clases: continuamos brindándote preparación, práctica y mentoría hasta que apruebes tu certificación, bajo las condiciones de participación del programa.</p></div></details>
+          <details class="acc"><summary><span>¿Cuánto cuesta el programa?</span><i></i></summary><div class="acc__body"><p>La inversión total es de $8,000 MXN e incluye los 4 meses de formación, mentoría, proyectos, preparación, el examen oficial de certificación, Talent Launchpad, comunidad, networking y soporte post-programa.</p></div></details>
+          <details class="acc"><summary><span>¿La certificación es oficial de Anthropic?</span><i></i></summary><div class="acc__body"><p>Sí. Claude Certified Developer – Foundations es una certificación oficial emitida por Anthropic. Para que quede claro: <b>Anthropic</b> emite la certificación oficial; <b>AI LAB</b> te brinda la formación, la preparación, la mentoría y el acompañamiento para obtenerla.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 15 · CTA FINAL -->
+    <section class="final" id="final" aria-labelledby="fnTitle">
+      <video class="final__video" id="finalVideo" muted playsinline loop preload="none" poster="assets/video/final.jpg" aria-hidden="true">
+        <source data-src="assets/video/final.webm" type="video/webm" />
+        <source data-src="assets/video/final.mp4" type="video/mp4" />
+      </video>
+      <div class="final__shade" aria-hidden="true"></div>
+      <div class="wrap final__content">
+        <p class="tag mono reveal"><span class="tag__bar"></span>La próxima generación</p>
+        <h2 class="final__title" id="fnTitle"><span class="final__l1 reveal">LA PRÓXIMA GENERACIÓN DE DESARROLLADORES<br/>NO SOLO USARÁ IA.</span><span class="final__l2 reveal" id="finalL2">LA CONSTRUIRÁ.</span></h2>
+        <p class="sub reveal">Tu camino para convertirte en AI Developer comienza aquí.</p>
+        <div class="final__actions reveal">
+          <button class="btn btn--primary btn--lg btn--magnetic" data-open-modal data-intent="camino">COMIENZA TU CAMINO</button>
+          <a class="btn btn--ghost btn--magnetic" href="#programa">Conoce el programa</a>
+        </div>
+        <p class="final__price mono reveal">$8,000 MXN · Examen oficial incluido</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div>
+        <a class="nav__brand" href="#top"><span class="nav__mark" aria-hidden="true"></span><span class="nav__word">AI LAB</span></a>
+        <p class="footer__tagline">Construye con IA. Certifícate. Posiciónate.</p>
+      </div>
+      <nav class="footer__links" aria-label="Pie de página">
+        <a href="#programa">Programa</a><a href="#proyectos">Proyectos</a><a href="#certificacion">Certificación</a><a href="#launchpad">Talent Launchpad</a><a href="#faq">Preguntas frecuentes</a>
+      </nav>
+      <p class="footer__legal">Claude, Claude Code y Claude Certified Developer – Foundations son marcas y productos de Anthropic. Anthropic emite la certificación oficial. AI LAB es un proveedor independiente de formación y no está afiliado a Anthropic. El acompañamiento hasta aprobar aplica bajo las condiciones de participación del programa.</p>
+      <p class="footer__copy mono">© <span id="year"></span> AI LAB School · Claude Developer Certification Program</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ MODAL · SOLICITUD -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close-modal aria-label="Cerrar">×</button>
+      <p class="tag mono" id="modalTag"><span class="tag__bar"></span>Solicitud de ingreso</p>
+      <h2 class="modal__title" id="modalTitle">Comienza tu camino como AI Developer</h2>
+      <p class="modal__body" id="modalBody">Cuéntanos quién eres. Un asesor de AI LAB te contactará para explicarte el programa, las fechas de la próxima generación y el proceso de inscripción.</p>
+      <form class="form" id="applyForm" novalidate data-endpoint="">
+        <input type="hidden" name="intent" id="formIntent" value="" />
+        <label class="field"><span>Nombre completo</span><input type="text" name="name" autocomplete="name" required /></label>
+        <label class="field"><span>Correo electrónico</span><input type="email" name="email" autocomplete="email" required /></label>
+        <label class="field"><span>WhatsApp (con lada)</span><input type="tel" name="phone" autocomplete="tel" placeholder="+52 ··· ··· ····" required /></label>
+        <label class="field"><span>Tu perfil actual</span>
+          <select name="profile" required>
+            <option value="">Selecciona una opción</option>
+            <option>Profesional de negocio o analista</option>
+            <option>Desarrollador / perfil técnico</option>
+            <option>Líder de producto, proyecto u operaciones</option>
+            <option>Emprendedor / consultor independiente</option>
+            <option>Estudiante o recién egresado</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label class="field field--full"><span>¿Qué te gustaría construir con IA? (opcional)</span><textarea name="goal" rows="3"></textarea></label>
+        <p class="form__err mono" id="formErr" hidden>Revisa los campos marcados para continuar.</p>
+        <div class="form__foot">
+          <button class="btn btn--primary form__submit" type="submit"><span>Solicitar mi lugar</span></button>
+          <p class="mono form__micro">$8,000 MXN · Examen oficial incluido</p>
+        </div>
+      </form>
+      <div class="form__ok" id="formOk" hidden>
+        <p class="tag mono"><span class="tag__bar"></span>Solicitud recibida</p>
+        <h3>Bienvenido al primer paso.</h3>
+        <p>Un asesor de AI LAB te contactará en breve para compartirte los detalles de la próxima generación y el proceso de inscripción.</p>
+        <button class="btn btn--ghost" data-close-modal>Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
