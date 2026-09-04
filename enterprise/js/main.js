@@ -107,9 +107,10 @@
   const orch = $('#netOrch');
   const orchState = $('.orch__state', orch);
 
-  const FRAME_COUNT = Number(hero.dataset.frames || 96);
-  const FRAME_STEP = isMobile() ? 2 : 1; // mobile loads every 2nd frame
-  const FRAME_PATH = (i) => `assets/hero/frames/frame_${String(i).padStart(4, '0')}.webp`;
+  const INLINE_FRAMES = Array.isArray(window.__AILE_FRAMES) ? window.__AILE_FRAMES : null; // standalone build inlines the sequence
+  const FRAME_COUNT = INLINE_FRAMES ? INLINE_FRAMES.length : Number(hero.dataset.frames || 96);
+  const FRAME_STEP = isMobile() && !INLINE_FRAMES ? 2 : 1; // mobile loads every 2nd frame
+  const FRAME_PATH = (i) => INLINE_FRAMES ? INLINE_FRAMES[i - 1] : `assets/hero/frames/frame_${String(i).padStart(4, '0')}.webp`;
   const frames = new Array(FRAME_COUNT).fill(null);
   let lastDrawn = -1, currentFrame = 0, targetFrame = 0, drawLoop = false;
   state.frameCount = FRAME_COUNT;

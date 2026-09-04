@@ -4,3 +4,4 @@ raw/
 *.log
 verify-shots/
 verify-fonts/
+enterprise/dist/
